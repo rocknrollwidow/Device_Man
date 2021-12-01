@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Device_Man</string>
+
+    <!--activity_main-->
+    <string name="tv_title01">内視鏡処置具管理ツール</string>
+    <string name="bt_current01">使用中の処置具</string>
+    <string name="bt_disposed01">廃棄した処置具</string>
+    <string name="bt_add01">新規登録</string>
+
+    <!--activity_category-->
+    <string name="bt_egd02">EGD</string>
+    <string name="bt_tcs02">TCS</string>
+    <string name="bt_ercpdbe02">ERCP\nDBE</string>
+    <string name="bt_other02">OTHER</string>
+
+    <!--fragment_deviceinfo-->
+    <string name="tv_number03">管理番号：</string>
+    <string name="tv_type03">使用部位：</string>
+    <string name="tv_status03">状態：</string>
+    <string name="tv_date_opened03">使用開始日：</string>
+    <string name="tv_review03">口コミ：</string>
+    <string name="tv_pics03">画像情報：</string>
+    <string name="bt_add_pics03">画像を追加</string>
+    <string name="bt_update03">情報を更新</string>
+    <string name="bt_dispose03">廃棄する</string>
+
+    <!--activity_new_device-->
+    <string name="tv_name04">処置具名：</string>
+    <string name="tv_number04">管理番号：</string>
+    <string name="tv_type04">使用部位：</string>
+    <string name="tv_status04">状態：</string>
+    <string name="tv_date_opened04">使用開始日：</string>
+    <string name="tv_review04">口コミ：</string>
+    <string name="tv_pics04">画像情報：</string>
+    <string name="tv_staff04">更新者：</string>
+    <string name="bt_add04">新規登録</string>
+
+    <!--Fragment_disposed_deviceinfo-->
+    <string name="tv_number05">管理番号：</string>
+    <string name="tv_type05">使用部位：</string>
+    <string name="tv_date_opened05">使用開始日：</string>
+    <string name="tv_date_disposed05">廃棄日：</string>
+    <string name="tv_review05">口コミ：</string>
+    <string name="tv_reason05">廃棄理由：</string>
+    <string name="tv_pics05">画像情報：</string>
+    <string name="bt_add_pics05">画像を追加</string>
+    <string name="bt_update05">情報を更新</string>
+
+    <!--dialog_dispose-->
+    <string name="tv_date_disposed06">廃棄日：</string>
+    <string name="tv_reason06">廃棄理由：</string>
+    <string name="tv_staff06">更新者：</string>
+    <string name="bt_dispose06">廃棄する</string>
+
+</resources>

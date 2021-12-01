@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+
+    <TextView
+        android:id="@+id/tvname04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_name04"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etname04"
+        android:layout_width="394dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:textSize="40dp"
+        app:layout_constraintStart_toEndOf="@+id/tvname04"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ettype04"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/tvtype04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextView
+        android:id="@+id/tvdateopened04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/tv_date_opened04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/etstatus04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextView
+        android:id="@+id/tvpics04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="156dp"
+        android:text="@string/tv_pics04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/tvreview04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <EditText
+        android:id="@+id/etdateopened04"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="92dp"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/tvdateopened04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextureView
+        android:id="@+id/textureView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/etreview04"
+        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
+
+    <TextureView
+        android:id="@+id/textureView3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textureView2"
+        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
+
+    <TextureView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textureView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
+
+    <TextureView
+        android:id="@+id/textureView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textureView"
+        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
+
+    <TextView
+        android:id="@+id/tvtype04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tv_type04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/etnumber04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <EditText
+        android:id="@+id/etreview04"
+        android:layout_width="277dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="216dp"
+        android:inputType="textMultiLine"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextView
+        android:id="@+id/tvstatus04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/tv_status04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvnumber04" />
+
+    <EditText
+        android:id="@+id/etstatus04"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="100dp"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/tvstatus04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <EditText
+        android:id="@+id/etnumber04"
+        android:layout_width="107dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:textSize="26dp"
+        app:layout_constraintStart_toEndOf="@+id/tvnumber04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <EditText
+        android:id="@+id/etstaff04"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="384dp"
+        app:layout_constraintStart_toEndOf="@+id/tvstaff04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextView
+        android:id="@+id/tvnumber04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/tv_number04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <TextView
+        android:id="@+id/tvreview04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/tv_review04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvstatus04" />
+
+    <TextView
+        android:id="@+id/tvstaff04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="384dp"
+        android:text="@string/tv_staff04"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="388dp"
+        android:text="@string/bt_add04"
+        android:textSize="50dp"
+        app:layout_constraintStart_toEndOf="@+id/etstaff04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

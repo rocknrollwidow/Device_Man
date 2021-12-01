@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <Button
+        android:id="@+id/btOther02"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-80dp"
+        android:text="@string/bt_other02"
+        android:textAlignment="textStart"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/btErcpdbe02"
+        app:layout_constraintTop_toBottomOf="@+id/btErcpdbe02" />
+
+    <Button
+        android:id="@+id/btEgd02"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="324dp"
+        android:layout_marginTop="152dp"
+        android:text="@string/bt_egd02"
+        android:textAlignment="textStart"
+        android:textSize="66sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btTcs02"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-80dp"
+        android:text="@string/bt_tcs02"
+        android:textAlignment="textStart"
+        android:textSize="66sp"
+        app:layout_constraintStart_toEndOf="@+id/btEgd02"
+        app:layout_constraintTop_toBottomOf="@+id/btEgd02" />
+
+    <Button
+        android:id="@+id/btErcpdbe02"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/bt_ercpdbe02"
+        android:textAlignment="textStart"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toStartOf="@+id/btTcs02"
+        app:layout_constraintTop_toBottomOf="@+id/btTcs02" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

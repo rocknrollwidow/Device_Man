@@ -16,10 +16,19 @@
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_deviceinfo.xml" value="0.33" />
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_deviceinfo.xml" value="0.18" />
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_list.xml" value="0.153125" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_category.xml" value="0.25" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_current_device.xml" value="0.203515625" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_disposed_device.xml" value="0.203515625" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_new_device.xml" value="0.25" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout/fragment_current_device_info.xml" value="0.16383647798742138" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout/fragment_current_list.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_deviceinfo.xml" value="0.25" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_list.xml" value="0.2713541666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

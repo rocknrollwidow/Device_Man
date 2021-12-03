@@ -71,8 +71,17 @@
         app:layout_constraintStart_toEndOf="@+id/tvdateopened04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
+    <Button
+        android:id="@+id/btDatepick04"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toEndOf="@+id/etdateopened04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+
     <TextureView
-        android:id="@+id/textureView"
+        android:id="@+id/textureView1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
@@ -90,6 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <TextureView
+        android:id="@+id/textureView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -103,7 +113,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/textureView"
+        app:layout_constraintStart_toEndOf="@+id/textureView1"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <TextView

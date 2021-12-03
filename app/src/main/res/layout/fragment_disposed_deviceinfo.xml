@@ -48,6 +48,7 @@
         app:layout_constraintStart_toEndOf="@+id/tvdateopened05"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
+
     <TextureView
         android:id="@+id/ttv_pics05_4"
         android:layout_width="100dp"

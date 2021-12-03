@@ -15,6 +15,7 @@
         android:layout_marginTop="108dp"
         android:text="@string/bt_disposed01"
         android:textSize="24dp"
+        android:onClick="onClickDisposed"
         app:layout_constraintBottom_toTopOf="@+id/btAdd01"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.21"
@@ -29,6 +30,7 @@
         android:layout_marginTop="4dp"
         android:text="@string/bt_add01"
         android:textSize="32dp"
+        android:onClick="onClickAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCurrent01" />
@@ -41,6 +43,7 @@
         android:layout_marginTop="64dp"
         android:text="@string/bt_current01"
         android:textSize="24dp"
+        android:onClick="onClickCurrent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle01" />
 

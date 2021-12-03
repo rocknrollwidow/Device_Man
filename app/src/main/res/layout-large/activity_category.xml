@@ -16,6 +16,7 @@
         android:text="@string/bt_other02"
         android:textAlignment="textStart"
         android:textSize="60sp"
+        android:onClick="onClickOther"
         app:layout_constraintStart_toEndOf="@+id/btErcpdbe02"
         app:layout_constraintTop_toBottomOf="@+id/btErcpdbe02" />
 
@@ -28,6 +29,7 @@
         android:text="@string/bt_egd02"
         android:textAlignment="textStart"
         android:textSize="66sp"
+        android:onClick="onClickEgd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +42,7 @@
         android:text="@string/bt_tcs02"
         android:textAlignment="textStart"
         android:textSize="66sp"
+        android:onClick="onClickTcs"
         app:layout_constraintStart_toEndOf="@+id/btEgd02"
         app:layout_constraintTop_toBottomOf="@+id/btEgd02" />
 
@@ -52,6 +55,7 @@
         android:text="@string/bt_ercpdbe02"
         android:textAlignment="textStart"
         android:textSize="60sp"
+        android:onClick="onClickErcpdbe"
         app:layout_constraintEnd_toStartOf="@+id/btTcs02"
         app:layout_constraintTop_toBottomOf="@+id/btTcs02" />
 

@@ -52,4 +52,7 @@
     <string name="tv_staff06">更新者：</string>
     <string name="bt_dispose06">廃棄する</string>
 
+    <!--date format-->
+    <string name="date_format">%d/%02d/%02d</string>
+
 </resources>

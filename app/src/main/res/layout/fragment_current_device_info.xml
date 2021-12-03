@@ -15,7 +15,8 @@
         android:layout_marginTop="28dp"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/ettype03"
@@ -25,7 +26,8 @@
         android:layout_marginTop="28dp"
         android:textSize="26dp"
         app:layout_constraintStart_toEndOf="@+id/tvtype03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvdateopened03"
@@ -57,7 +59,8 @@
         android:layout_marginTop="88dp"
         android:textSize="26dp"
         app:layout_constraintStart_toEndOf="@+id/tvdateopened03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextureView
         android:id="@+id/ttv_pics03_1"
@@ -115,7 +118,8 @@
         android:inputType="textMultiLine"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvstatus03"
@@ -136,7 +140,8 @@
         android:layout_marginTop="88dp"
         android:textSize="26dp"
         app:layout_constraintStart_toEndOf="@+id/tvstatus03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etnumber03"
@@ -146,7 +151,8 @@
         android:layout_marginTop="28dp"
         android:textSize="26dp"
         app:layout_constraintStart_toEndOf="@+id/tvnumber03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvnumber03"

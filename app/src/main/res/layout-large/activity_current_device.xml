@@ -9,9 +9,10 @@
     tools:ignore="MissingDefaultResource">
 
     <fragment
+        android:name="com.ro.android.device_man.CurrentListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.4"/>
+        android:layout_weight="0.4" />
 
     <FrameLayout
         android:layout_width="0dp"

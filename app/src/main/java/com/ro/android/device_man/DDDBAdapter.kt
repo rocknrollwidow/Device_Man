@@ -47,13 +47,8 @@ class DDDBAdapter (private var context: Context ) {
      * DBのレコードへ登録
      * saveDB()
      *
-     * @param product 品名
-     * @param maker  メーカー
-     * @param quantity  個数
-     * @param constant   定数
-     * @param category  種類
      */
-    fun saveDB(id: String,name: String,type: String,number: Int,date_opened: String,date_disposed: String,
+    fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
                reason: String,review: String,unusable: String,staff: String,pics: ByteArray){
         db!!.beginTransaction() // トランザクション開始
         try {
@@ -116,7 +111,7 @@ class DDDBAdapter (private var context: Context ) {
         closeDB()
     }
 
-    fun updateDB(id: String,name: String,type: String,number: Int,date_opened: String,date_disposed: String,
+    fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
                  reason: String,review: String,unusable: String,staff: String,pics: ByteArray){
 
         openDB()
@@ -223,7 +218,7 @@ class DDDBAdapter (private var context: Context ) {
                     + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COL_NAME + " TEXT NOT NULL,"
                     + COL_TYPE + " TEXT NOT NULL,"
-                    + COL_NUMBER + " INTEGER NOT NULL,"
+                    + COL_NUMBER + " TEXT NOT NULL,"
                     + COL_DATE_OPENED + " TEXT NOT NULL,"
                     + COL_DATE_DISPOSED + " TEXT NOT NULL,"
                     + COL_REASON + " TEXT NOT NULL,"

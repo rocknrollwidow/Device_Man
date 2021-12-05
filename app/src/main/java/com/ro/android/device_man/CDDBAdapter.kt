@@ -11,7 +11,7 @@ import java.lang.Exception
 //使用中の処置具のDBA
 class CDDBAdapter (private var context: Context ) {
         private var db: SQLiteDatabase? = null // SQLiteDatabase
-        private var dbHelper: DBHelper? = null // DBHepler
+        private var dbHelper: DBHelper? = null // DBHelper
 
         /**
          * DBの読み書き
@@ -48,13 +48,8 @@ class CDDBAdapter (private var context: Context ) {
          * DBのレコードへ登録
          * saveDB()
          *
-         * @param product 品名
-         * @param maker  メーカー
-         * @param quantity  個数
-         * @param constant   定数
-         * @param category  種類
          */
-        fun saveDB(id: String,name: String,type: String,number: Int,date_opened: String,status: String,
+        fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
                    review: String,unusable: String,staff: String,pics: ByteArray){
             db!!.beginTransaction() // トランザクション開始
             try {
@@ -116,7 +111,7 @@ class CDDBAdapter (private var context: Context ) {
             closeDB()
         }
 
-        fun updateDB(id: String,name: String,type: String,number: Int,date_opened: String,status: String,
+        fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
                      review: String,unusable: String,staff: String,pics: ByteArray){
 
             openDB()
@@ -222,7 +217,7 @@ class CDDBAdapter (private var context: Context ) {
                         + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                         + COL_NAME + " TEXT NOT NULL,"
                         + COL_TYPE + " TEXT NOT NULL,"
-                        + COL_NUMBER + " INTEGER NOT NULL,"
+                        + COL_NUMBER + " TEXT NOT NULL,"
                         + COL_DATE_OPENED + " TEXT NOT NULL,"
                         + COL_STATUS + " TEXT NOT NULL,"
                         + COL_REVIEW + " TEXT NOT NULL,"

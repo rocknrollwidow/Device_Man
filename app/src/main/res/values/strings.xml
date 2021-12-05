@@ -52,6 +52,10 @@
     <string name="tv_staff06">更新者：</string>
     <string name="bt_dispose06">廃棄する</string>
 
+    <!--Listview-->
+    <string name="tv_current_number">管理番号：</string>
+    <string name="tv_disposed_date_disposed">廃棄日：</string>
+
     <!--date format-->
     <string name="date_format">%d/%02d/%02d</string>
 

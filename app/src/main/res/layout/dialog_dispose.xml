@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Todo 廃棄日"etDateDisposed06"は当日の日付を自動入力-->
+    <!--Todo "廃棄する"buttonタップで廃棄日・廃棄理由・更新者をdisposedSheetの当該レコードへ追加-->
+
     <TextView
         android:id="@+id/tvDateDisposed06"
         android:layout_width="60dp"

@@ -8,6 +8,8 @@
     android:orientation="horizontal"
     tools:ignore="MissingDefaultResource">
 
+    <!--Todo fragment_current_list,fragment_current_device_infoをinflate-->
+
     <fragment
         android:name="com.ro.android.device_man.CurrentListFragment"
         android:layout_width="0dp"

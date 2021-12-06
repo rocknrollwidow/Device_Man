@@ -5,3 +5,8 @@
     android:layout_height="match_parent">
 
 </ListView>
+
+    <!--Todo 5-->
+    <!--Todo Table"disposedSheet"の全内容を表示-->
+
+    <!--Todo そのうち"type"でselectできるように変更する-->

@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <!--Todo 2-->
+    <!--Todo 画像情報下のTextureViewタップ → カメラ起動 or 画像を拡大-->
+    <!--Todo "新規登録"buttonをタップ → 各EditTextに入力した内容をcurrentSheetへ保存-->
+    <!--Todo データベースへの登録完了と同時にEditTextをClear-->
 
     <TextView
         android:id="@+id/tvname04"

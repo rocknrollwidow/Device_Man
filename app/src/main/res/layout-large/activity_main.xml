@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <!--Todo 1-->
+    <!--Todo "使用中の処置具"buttonをタップ → activity_categoryへ遷移-->
+    <!--Todo "廃棄した処置具"buttonをタップ → activity_disposed_deviceへ遷移-->
+    <!--Todo "新規登録"buttonをタップ → activity_new_deviceへ遷移-->
+
     <TextView
         android:id="@+id/tvTitle01"
         android:layout_width="match_parent"

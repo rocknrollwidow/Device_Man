@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <!--Todo 2-->
+    <!--Todo 各buttonをタップ → buttonに対応した文字列をもってfragment_current_listに遷移-->
+
+
     <Button
         android:id="@+id/btOther02"
         android:layout_width="350dp"

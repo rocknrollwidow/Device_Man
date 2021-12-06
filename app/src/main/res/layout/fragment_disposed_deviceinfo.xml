@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <!--Todo 6-->
+    <!--Todo fragment_disposed_listのitemをタップし"name"と"number"、"date_disposed"でselect-->
+    <!--Todo 該当するレコードの内容を各EditTextに表示-->
+    <!--Todo "画像情報"エリアのTextureViewをタップ → 画像を拡大-->
+    <!--Todo "画像を追加"buttonをタップ → カメラ起動-->
+    <!--Todo "情報を更新"buttonをタップ → disposedSheetをupdate-->
+
+
     <EditText
         android:id="@+id/etname05"
         android:layout_width="678dp"

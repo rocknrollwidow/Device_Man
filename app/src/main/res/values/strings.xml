@@ -59,4 +59,20 @@
     <!--date format-->
     <string name="date_format">%d/%02d/%02d</string>
 
+    <!--categoryL spItem-->
+    <string-array name="sp_status">
+        <item>使用可能</item>
+        <item>使用不可</item>
+    </string-array>
+
+    <!--categoryL spItem-->
+    <string-array name="sp_type">
+        <item>EGD</item>
+        <item>TCS</item>
+        <item>ERCP・DBE</item>
+        <item>その他</item>
+    </string-array>
+
+
+
 </resources>

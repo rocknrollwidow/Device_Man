@@ -50,7 +50,7 @@ class CDDBAdapter (private var context: Context ) {
          *
          */
         fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
-                   review: String,unusable: String,staff: String,pics: ByteArray){
+                   review: String,staff: String,pics: ByteArray){
             db!!.beginTransaction() // トランザクション開始
             try {
                 val values = ContentValues() // ContentValuesでデータを設定していく
@@ -60,7 +60,6 @@ class CDDBAdapter (private var context: Context ) {
                 values.put(COL_DATE_OPENED,date_opened)
                 values.put(COL_STATUS,status)
                 values.put(COL_REVIEW,review)
-                values.put(COL_UNUSABLE,unusable)
                 values.put(COL_STAFF,staff)
                 values.put(COL_PICS,pics)
 
@@ -112,7 +111,7 @@ class CDDBAdapter (private var context: Context ) {
         }
 
         fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
-                     review: String,unusable: String,staff: String,pics: ByteArray){
+                     review: String,staff: String,pics: ByteArray){
 
             openDB()
 
@@ -123,7 +122,6 @@ class CDDBAdapter (private var context: Context ) {
             values.put(COL_DATE_OPENED,date_opened)
             values.put(COL_STATUS,status)
             values.put(COL_REVIEW,review)
-            values.put(COL_UNUSABLE,unusable)
             values.put(COL_STAFF,staff)
             values.put(COL_PICS,pics)
             db!!.update(DB_TABLE,values,"_id = ?",arrayOf(id))
@@ -221,7 +219,6 @@ class CDDBAdapter (private var context: Context ) {
                         + COL_DATE_OPENED + " TEXT NOT NULL,"
                         + COL_STATUS + " TEXT NOT NULL,"
                         + COL_REVIEW + " TEXT NOT NULL,"
-                        + COL_UNUSABLE + " TEXT NOT NULL,"
                         + COL_STAFF + " TEXT NOT NULL,"
                         + COL_PICS + " BLOB NOT NULL"
                         + ");")
@@ -258,7 +255,6 @@ class CDDBAdapter (private var context: Context ) {
             const val COL_DATE_OPENED = "date_opened" // 導入日
             const val COL_STATUS = "status" // 状態
             const val COL_REVIEW = "review" // 備考
-            const val COL_UNUSABLE = "unusable" // 使用可否
             const val COL_STAFF = "staff" // 対応者
             const val COL_PICS = "pics" // 画像
         }

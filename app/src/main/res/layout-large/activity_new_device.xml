@@ -34,8 +34,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/ettype04"
+    <Spinner
+        android:id="@+id/sptype04"
         android:layout_width="180dp"
         android:layout_height="35dp"
         android:layout_marginStart="12dp"
@@ -53,7 +53,7 @@
         android:layout_marginTop="92dp"
         android:text="@string/tv_date_opened04"
         android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/etstatus04"
+        app:layout_constraintStart_toEndOf="@+id/spstatus04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
     <TextView
@@ -79,13 +79,13 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btDatepick04"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="88dp"
-        app:layout_constraintStart_toEndOf="@+id/etdateopened04"
-        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
+        android:id="@+id/btaddpics04"
+        android:layout_width="134dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="148dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpics04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextureView
         android:id="@+id/textureView1"
@@ -157,8 +157,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvnumber04" />
 
-    <EditText
-        android:id="@+id/etstatus04"
+    <Spinner
+        android:id="@+id/spstatus04"
         android:layout_width="160dp"
         android:layout_height="35dp"
         android:layout_marginStart="12dp"
@@ -179,8 +179,8 @@
         app:layout_constraintTop_toBottomOf="@+id/tvname04"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/etstaff04"
+    <Spinner
+        android:id="@+id/spstaff04"
         android:layout_width="180dp"
         android:layout_height="35dp"
         android:layout_marginStart="12dp"
@@ -223,13 +223,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
     <Button
+        android:id="@+id/btadd04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
         android:layout_marginTop="388dp"
         android:text="@string/bt_add04"
         android:textSize="50dp"
-        app:layout_constraintStart_toEndOf="@+id/etstaff04"
+        app:layout_constraintStart_toEndOf="@+id/spstaff04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

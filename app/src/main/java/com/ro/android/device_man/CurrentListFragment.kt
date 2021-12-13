@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
+//Todo 画像の取り扱いが未実装
 
 class CurrentListFragment : Fragment(){
     private var cddbAdapter: CDDBAdapter? = null

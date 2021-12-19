@@ -49,8 +49,8 @@ class CDDBAdapter (private var context: Context ) {
          * saveDB()
          *
          */
-        fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
-                   review: String,staff: String,pics: ByteArray){
+        fun saveDB(name: String,type: String,number: String,date_opened: String,status: String,
+                   review: String){
             db!!.beginTransaction() // トランザクション開始
             try {
                 val values = ContentValues() // ContentValuesでデータを設定していく
@@ -60,8 +60,6 @@ class CDDBAdapter (private var context: Context ) {
                 values.put(COL_DATE_OPENED,date_opened)
                 values.put(COL_STATUS,status)
                 values.put(COL_REVIEW,review)
-                values.put(COL_STAFF,staff)
-                values.put(COL_PICS,pics)
 
                 // insertメソッド データ登録
                 // 第1引数：DBのテーブル名
@@ -111,7 +109,7 @@ class CDDBAdapter (private var context: Context ) {
         }
 
         fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,status: String,
-                     review: String,staff: String,pics: ByteArray){
+                     review: String){
 
             openDB()
 
@@ -122,8 +120,7 @@ class CDDBAdapter (private var context: Context ) {
             values.put(COL_DATE_OPENED,date_opened)
             values.put(COL_STATUS,status)
             values.put(COL_REVIEW,review)
-            values.put(COL_STAFF,staff)
-            values.put(COL_PICS,pics)
+           // values.put(COL_PICS,pics)
             db!!.update(DB_TABLE,values,"_id = ?",arrayOf(id))
 
             closeDB()
@@ -218,9 +215,7 @@ class CDDBAdapter (private var context: Context ) {
                         + COL_NUMBER + " TEXT NOT NULL,"
                         + COL_DATE_OPENED + " TEXT NOT NULL,"
                         + COL_STATUS + " TEXT NOT NULL,"
-                        + COL_REVIEW + " TEXT NOT NULL,"
-                        + COL_STAFF + " TEXT NOT NULL,"
-                        + COL_PICS + " BLOB NOT NULL"
+                        + COL_REVIEW + " TEXT NOT NULL"
                         + ");")
                 db.execSQL(createTbl) //SQL文の実行
             }
@@ -255,7 +250,7 @@ class CDDBAdapter (private var context: Context ) {
             const val COL_DATE_OPENED = "date_opened" // 導入日
             const val COL_STATUS = "status" // 状態
             const val COL_REVIEW = "review" // 備考
-            const val COL_STAFF = "staff" // 対応者
+           // const val COL_STAFF = "staff" // 対応者
             const val COL_PICS = "pics" // 画像
         }
 

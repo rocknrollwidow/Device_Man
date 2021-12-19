@@ -91,7 +91,6 @@ private fun findViews(){
     etReview04 = findViewById<View>(R.id.etreview04) as EditText
     spStatus04 = findViewById<View>((R.id.spstatus04)) as Spinner
     etNumber04 = findViewById<View>(R.id.etnumber04) as EditText
-    spStaff04 = findViewById<View>(R.id.spstatus04) as Spinner
     btAdd04 = findViewById<View>(R.id.btadd04) as Button
     btAddPics04 = findViewById<View>(R.id.btaddpics04) as Button
 
@@ -114,11 +113,11 @@ private fun saveList() {
     val strReview04 = etReview04!!.text.toString()
     val strType04 = spType04!!.selectedItem.toString()
     val strStatus04 = spStatus04!!.selectedItem.toString()
-    val strStaff04 = spStaff04!!.selectedItem.toString()
+
 
     // EditTextが空白の場合
     if (strName04 == "" || strDateOpened04 == "" || strNumber04 == "" || strReview04 == "" ||
-        strType04 == "" || strStatus04 == "" || strStaff04 == "") {
+        strType04 == "" || strStatus04 == "" ) {
 
         Toast.makeText(this@NewDeviceActivity, "必要項目が入力されていません。", Toast.LENGTH_SHORT).show()
     } else {        // EditTextが全て入力されている場合
@@ -132,7 +131,7 @@ private fun saveList() {
         // DBへの登録処理
         val dbAdapter = CDDBAdapter(this)
         dbAdapter.openDB() // DBの読み書き
-        dbAdapter.saveDB(strName04, strType04, strNumber04, strDateOpened04, strStatus04, strReview04, strStaff04,pics) // DBに登録
+        dbAdapter.saveDB(strName04, strType04, strNumber04, strDateOpened04, strStatus04, strReview04) // DBに登録
         dbAdapter.closeDB() // DBを閉じる
         Toast.makeText(this@NewDeviceActivity, "物品を追加しました。", Toast.LENGTH_SHORT).show()
         init() // 初期値設定

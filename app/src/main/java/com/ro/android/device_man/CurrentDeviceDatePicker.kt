@@ -8,7 +8,7 @@ import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DisposeDeviceDatepicker : DialogFragment(), DatePickerDialog.OnDateSetListener{
+class CurrentDeviceDatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener{
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val c = Calendar.getInstance()
@@ -23,7 +23,7 @@ class DisposeDeviceDatepicker : DialogFragment(), DatePickerDialog.OnDateSetList
 
         var str = getString(R.string.date_format, year, month + 1, day)
 
-       // DisposedDeviceActivity.etDateOpened04!!.setText(str)
+        CurrentDeviceInfoFragment.etDateOpened03!!.setText(str)
 
     }
 

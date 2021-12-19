@@ -1,13 +1,16 @@
 package com.ro.android.device_man
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Layout
 import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 
 //Todo 画像の取り扱いが未実装
 
@@ -70,6 +73,36 @@ class CurrentListFragment : Fragment(){
         cddbAdapter!!.closeDB() // DBを閉じる
         mlvCurrent!!.adapter = myBaseAdapter // ListViewにmyBaseAdapterをセット
         myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
+    }
+
+    inner class ListItemClickListener : AdapterView.OnItemClickListener{
+        override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long){
+
+            val item = parent.getItemAtPosition(position) as MyCurrentItem
+            val listId = item.getId()
+            val name = item.name
+            val type = item.type
+            val number = item.number
+            val dateOpened = item.date_opened
+            val status = item.status
+            val review = item.review
+            val unusable = item.unusable
+            val pics1 = item.pics
+
+            setFragmentResult("key", bundleOf(
+                "key1" to listId,
+                "key2" to name,
+                "key3" to type,
+                "key4" to number,
+                "key5" to dateOpened,
+                "key6" to status,
+                "key7" to review,
+                "key8" to unusable,
+                "key9" to pics1
+            ))
+
+
+        }
     }
 
     inner class MyBaseAdapter     // コンストラクタの生成

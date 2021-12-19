@@ -28,8 +28,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/ettype03"
+    <Spinner
+        android:id="@+id/sptype03"
         android:layout_width="180dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
@@ -217,6 +217,15 @@
         android:text="@string/bt_dispose03"
         android:textSize="40dp"
         app:layout_constraintStart_toEndOf="@+id/btupdate03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <Button
+        android:id="@+id/btdatepicker03"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@+id/etdateopened03"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

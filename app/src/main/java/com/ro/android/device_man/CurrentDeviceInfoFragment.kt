@@ -75,7 +75,6 @@ class CurrentDeviceInfoFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 val text = parent?.selectedItem as String
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
 
@@ -114,28 +113,19 @@ class CurrentDeviceInfoFragment : Fragment() {
         }
     }
 
-
-
     fun onClickWarehouseButton(view: View){
 
         val id = listId.toString()
-        val product = mtvProductW!!.text.toString()
-        val maker = mtvMakerW!!.text.toString()
-        val constant = mtvConstantW!!.text.toString()
-        val quantity = mtvQuantityW!!.text.toString()
-        val warehousing = metWarehousing!!.text.toString()
-        val date = metDateW!!.text.toString()
-        val staff = mspStaffW!!.selectedItem.toString()
+        val name = etName03!!.text.toString()
+        val type = spType03!!.selectedItem.toString()
+        val dateopened = etDateOpened03!!.text.toString()
+        val number = etNumber03!!.text.toString()
+        val status = etStatus03!!.text.toString()
+        val review = etReview03!!.text.toString()
 
-        val iConstant = constant.toInt()
-        val iQuantity = quantity.toInt()
-        val iWarehousing = warehousing.toInt()
-
-        whdbAdapter!!.saveDB(product,maker,iQuantity,iWarehousing,staff,date)
-        Toast.makeText(this@Warehousing, "情報を変更しました。", Toast.LENGTH_SHORT).show()
-
-        val newQuantity: Int = iQuantity + iWarehousing
-        mtvQuantityW!!.setText(newQuantity.toString())
+        cddbAdapter!!.saveDB(name,type,dateopened,number,status,review)
+        Toast.makeText(this.requireContext(), "情報を変更しました。", Toast.LENGTH_SHORT).show()
+/*
         if(newQuantity > iConstant){
 
             val builder = AlertDialog.Builder(this@Warehousing)
@@ -155,13 +145,12 @@ class CurrentDeviceInfoFragment : Fragment() {
             dialog.show()
             false
         }
-        dbAdapter!!.changeQ(id,newQuantity)
+        dbAdapter!!.changeQ(id,newQuantity)*/
     }
 
-
     fun showDatePickerDialog(view: View){
-        val newFragment = DatePickW()
-        newFragment.show(supportFragmentManager,"datePicker")
+        val newFragment = CurrentDeviceDatePicker()
+        newFragment.show(childFragmentManager,"datePicker")
     }
 
 

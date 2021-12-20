@@ -15,7 +15,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="30dp"
         android:text="@string/tv_date_disposed06"
-        android:textsize="80dp"
+        android:textSize="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +24,7 @@
         android:layout_width="160dp"
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
+        android:textSize="80dp"
         app:layout_constraintStart_toEndOf="@+id/tvDateDisposed06"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -35,7 +36,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="30dp"
         android:text="@string/tv_reason06"
-        android:textsize="80dp"
+        android:textSize="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDateDisposed06" />
 
@@ -56,7 +57,7 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="30dp"
         android:text="@string/tv_staff06"
-        android:textsize="80dp"
+        android:textSize="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etReason06" />
 

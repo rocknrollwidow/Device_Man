@@ -8,7 +8,7 @@
         android:id="@+id/tv_current_name07"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textsize="20dp"/>
+        android:textSize="20dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,13 +18,13 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textsize="20dp"
+            android:textSize="20dp"
             android:text="@string/tv_current_number"/>
         <TextView
             android:id="@+id/tv_current_number07"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:textsize="20dp"/>
+            android:textSize="20dp"/>
 
     </LinearLayout>
 </LinearLayout>

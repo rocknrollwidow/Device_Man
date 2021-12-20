@@ -1,5 +1,6 @@
 package com.ro.android.device_man
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.TextureView
@@ -13,7 +14,6 @@ class NewDeviceActivity : AppCompatActivity() {
 
     private var etName04: EditText? = null
     private var spType04: Spinner? = null
-    private var etDateOpened04: EditText? = null
     private var etReview04: EditText? = null
     private var spStatus04: Spinner? = null
     private var etNumber04: EditText? = null
@@ -28,6 +28,12 @@ class NewDeviceActivity : AppCompatActivity() {
     private var txv2: TextureView? = null
     private var txv3: TextureView? = null
     private var txv4: TextureView? = null
+
+    companion object{
+        @SuppressLint("StaticFieldLeak")
+        var etDateOpened04: EditText? = null
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

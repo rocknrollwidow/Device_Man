@@ -215,7 +215,7 @@ class CDDBAdapter (private var context: Context ) {
                         + COL_NUMBER + " TEXT NOT NULL,"
                         + COL_DATE_OPENED + " TEXT NOT NULL,"
                         + COL_STATUS + " TEXT NOT NULL,"
-                        + COL_REVIEW + " TEXT NOT NULL"
+                        + COL_REVIEW + " TEXT NULL"
                         + ");")
                 db.execSQL(createTbl) //SQL文の実行
             }

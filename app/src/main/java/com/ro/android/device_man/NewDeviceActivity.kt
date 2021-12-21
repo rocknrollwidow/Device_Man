@@ -19,6 +19,7 @@ class NewDeviceActivity : AppCompatActivity() {
     private var etNumber04: EditText? = null
     private var spStaff04: Spinner? = null
     private var btAdd04: Button? = null
+    private var btDatePicker04: Button? = null
     private var btAddPics04: Button? = null
     private var statusArray: Array<String?>? = null
     private var typeArray: Array<String?>? = null
@@ -98,6 +99,7 @@ private fun findViews(){
     spStatus04 = findViewById<View>((R.id.spstatus04)) as Spinner
     etNumber04 = findViewById<View>(R.id.etnumber04) as EditText
     btAdd04 = findViewById<View>(R.id.btadd04) as Button
+    btDatePicker04 = findViewById<View>(R.id.btdatepicker04) as Button
     btAddPics04 = findViewById<View>(R.id.btaddpics04) as Button
 
 }
@@ -110,6 +112,11 @@ private fun init() {
     etName04!!.requestFocus() // フォーカスを処置具名のEditTextに指定
 }
 
+    fun showDatePickerDialog(view: View){
+        val newFragment = AddDeviceDatePicker()
+        newFragment.show(supportFragmentManager,"datePicker")
+    }
+
 private fun saveList() {
 
     // 各EditTextで入力されたテキストを取得
@@ -119,7 +126,6 @@ private fun saveList() {
     val strReview04 = etReview04!!.text.toString()
     val strType04 = spType04!!.selectedItem.toString()
     val strStatus04 = spStatus04!!.selectedItem.toString()
-
 
     // EditTextが空白の場合
     if (strName04 == "" || strDateOpened04 == "" || strNumber04 == "" || strReview04 == "" ||

@@ -14,34 +14,34 @@
     <Button
         android:id="@+id/btOther02"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="-80dp"
+        android:onClick="onClickOther"
         android:text="@string/bt_other02"
         android:textAlignment="textStart"
         android:textSize="60sp"
-        android:onClick="onClickOther"
         app:layout_constraintStart_toEndOf="@+id/btErcpdbe02"
         app:layout_constraintTop_toBottomOf="@+id/btErcpdbe02" />
 
     <Button
         android:id="@+id/btEgd02"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="104dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="60dp"
+        android:onClick="onClickEgd"
         android:text="@string/bt_egd02"
         android:textAlignment="textStart"
         android:textSize="66sp"
-        android:onClick="onClickEgd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btTcs02"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="-80dp"
         android:text="@string/bt_tcs02"
         android:textAlignment="textStart"
@@ -53,13 +53,13 @@
     <Button
         android:id="@+id/btErcpdbe02"
         android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="-80dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="-50dp"
         android:layout_marginEnd="4dp"
+        android:onClick="onClickErcpdbe"
         android:text="@string/bt_ercpdbe02"
         android:textAlignment="textStart"
         android:textSize="60sp"
-        android:onClick="onClickErcpdbe"
         app:layout_constraintEnd_toStartOf="@+id/btTcs02"
         app:layout_constraintTop_toBottomOf="@+id/btTcs02" />
 

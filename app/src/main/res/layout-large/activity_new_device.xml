@@ -26,7 +26,7 @@
     <EditText
         android:id="@+id/etname04"
         android:layout_width="394dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:textSize="40dp"
@@ -70,10 +70,10 @@
     <EditText
         android:id="@+id/etdateopened04"
         android:layout_width="180dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="92dp"
-        android:textSize="26dp"
+        android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/tvdateopened04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -171,23 +171,13 @@
     <EditText
         android:id="@+id/etnumber04"
         android:layout_width="107dp"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="40dp"
         android:textSize="26dp"
         app:layout_constraintStart_toEndOf="@+id/tvnumber04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <Spinner
-        android:id="@+id/spstaff04"
-        android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="384dp"
-        app:layout_constraintStart_toEndOf="@+id/tvstaff04"
-        app:layout_constraintTop_toBottomOf="@+id/tvname04"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvnumber04"
@@ -211,26 +201,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvstatus04" />
 
-    <TextView
-        android:id="@+id/tvstaff04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="384dp"
-        android:text="@string/tv_staff04"
-        android:textSize="26dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
-
     <Button
         android:id="@+id/btadd04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginStart="576dp"
+        android:layout_marginTop="340dp"
         android:text="@string/bt_add04"
         android:textSize="50dp"
-        app:layout_constraintStart_toEndOf="@+id/spstaff04"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
+    <Button
+        android:id="@+id/btdatepicker04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:onClick="showDatePickerDialog"
+        app:layout_constraintStart_toEndOf="@+id/etdateopened04"
+        app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 </androidx.constraintlayout.widget.ConstraintLayout>

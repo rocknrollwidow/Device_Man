@@ -18,7 +18,7 @@
     <string name="tv_type03">使用部位：</string>
     <string name="tv_status03">状態：</string>
     <string name="tv_date_opened03">使用開始日：</string>
-    <string name="tv_review03">口コミ：</string>
+    <string name="tv_review03">備考：</string>
     <string name="tv_pics03">画像情報：</string>
     <string name="bt_add_pics03">画像を追加</string>
     <string name="bt_update03">情報を更新</string>
@@ -30,7 +30,7 @@
     <string name="tv_type04">使用部位：</string>
     <string name="tv_status04">状態：</string>
     <string name="tv_date_opened04">使用開始日：</string>
-    <string name="tv_review04">口コミ：</string>
+    <string name="tv_review04">備考：</string>
     <string name="tv_pics04">画像情報：</string>
     <string name="tv_staff04">更新者：</string>
     <string name="bt_add04">新規登録</string>
@@ -40,7 +40,7 @@
     <string name="tv_type05">使用部位：</string>
     <string name="tv_date_opened05">使用開始日：</string>
     <string name="tv_date_disposed05">廃棄日：</string>
-    <string name="tv_review05">口コミ：</string>
+    <string name="tv_review05">備考：</string>
     <string name="tv_reason05">廃棄理由：</string>
     <string name="tv_pics05">画像情報：</string>
     <string name="bt_add_pics05">画像を追加</string>

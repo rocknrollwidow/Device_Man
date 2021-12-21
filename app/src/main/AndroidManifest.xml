@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Device_Man">
         <activity
             android:name=".NewDeviceActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".DisposedDeviceActivity"
             android:exported="false" />
@@ -20,7 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".CategoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -22,6 +22,8 @@ class CurrentListFragment : Fragment(){
     private var myCurrentItem: MyCurrentItem? = null
     private val columns: Array<String?>? = null
 
+    private  var _isLayoutXLarge = true
+
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState:  Bundle?): View?{
         val view = inflater.inflate(R.layout.fragment_current_list,container,false)
 
@@ -33,8 +35,21 @@ class CurrentListFragment : Fragment(){
         items = ArrayList()
         cddbAdapter = CDDBAdapter(this.requireContext())
         myBaseAdapter = MyBaseAdapter(this.requireContext(),items as ArrayList<MyCurrentItem>)
-        mlvCurrent = view.findViewById(R.id.lvCurrent)
+        mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
+        mlvCurrent!!.onItemClickListener = ListItemClickListener()
         loadMyList()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        // 親クラスのメソッド呼び出し。
+        super.onActivityCreated(savedInstanceState)
+        // 自分が所属するアクティビティからmenuThanksFrameを取得。
+        val currentDeviceFrame = activity?.findViewById<View>(R.id.currentDeviceFrame)
+        // menuThanksFrameがnull、つまり存在しないなら…
+        if(currentDeviceFrame == null) {
+            // 画面判定フラグを通常画面とする。
+            _isLayoutXLarge = false
+        }
     }
 
 
@@ -53,13 +68,11 @@ class CurrentListFragment : Fragment(){
                     c.getInt(0),
                     c.getString(1),
                     c.getString(2),
+                    c.getString(3),
                     c.getString(4),
                     c.getString(5),
-                    c.getString(6),
-                    c.getString(7),
-                    c.getString(8),
-                    c.getString(9),
-                    c.getBlob(10)
+                    c.getString(6)
+
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -86,8 +99,27 @@ class CurrentListFragment : Fragment(){
             val dateOpened = item.date_opened
             val status = item.status
             val review = item.review
-            val unusable = item.unusable
-            val pics1 = item.pics
+          //  val unusable = item.unusable
+        //    val pics1 = item.pics
+
+            // 引き継ぎデータをまとめて格納できるBundleオブジェクト生成。
+            val bundle = Bundle()
+            // Bundleオブジェクトに引き継ぎデータを格納。
+            bundle.putString("listId", listId.toString())
+
+            // フラグメントトランザクションの開始。
+            val transaction = fragmentManager?.beginTransaction()
+            // 注文完了フラグメントを生成。
+            val currentDeviceInfoFragment = CurrentDeviceInfoFragment()
+            // 引き継ぎデータを注文完了フラグメントに格納。
+            currentDeviceInfoFragment.arguments = bundle
+            // 生成した注文完了フラグメントをmenuThanksFrameレイアウト部品に追加(置き換え)。
+            transaction?.replace(R.id.currentDeviceFrame, currentDeviceInfoFragment)
+            // フラグメントトランザクションのコミット。
+            transaction?.commit()
+
+
+
 
             setFragmentResult("key", bundleOf(
                 "key1" to listId,
@@ -96,9 +128,9 @@ class CurrentListFragment : Fragment(){
                 "key4" to number,
                 "key5" to dateOpened,
                 "key6" to status,
-                "key7" to review,
-                "key8" to unusable,
-                "key9" to pics1
+                "key7" to review
+            //    "key8" to unusable,
+            //    "key9" to pics1
             ))
 
 

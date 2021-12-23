@@ -23,7 +23,7 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var intent: Intent? = null
     private var cddbAdapter: CDDBAdapter? = null
     private var spAdapter: ArrayAdapter<*>? = null
-    private var listId: Int = -1
+    private var listId: String? = null
     private var items: MutableList<MyCurrentItem>? = null
     private var etName03: EditText? = null
     private var spType03: Spinner? = null
@@ -39,7 +39,14 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var btUpdate03: Button? = null
     private var btDispose03: Button? = null
     private var btDatePicker03: Button? = null
+    private var myCurrentItem: MyCurrentItem? = null
     private var columns: Array<String?>? = null
+    private var name: String? = null
+    private var type: String? = null
+    private var number: String? = null
+    private var dateOpened: String? = null
+    private var status: String? = null
+    private var review: String? = null
 
 
     companion object{
@@ -54,22 +61,22 @@ class CurrentDeviceInfoFragment : Fragment() {
             _isLayoutLarge = false
         }
 
-
         etDateOpened03!!.setText(LocalDate.now().toString())//>API26
 
         cddbAdapter = CDDBAdapter(this.requireContext())
         items = ArrayList()
-        setFragmentResultListener("key"){requestKey, bundle ->
-            val listId = bundle.getString("key1")
-            val name = bundle.getString("key2")
-            val type = bundle.getString("key3")
-            val number = bundle.getString("key4")
-            val dateOpened = bundle.getString("key5")
-            val status = bundle.getString("key6")
-            val review = bundle.getString("key7")
-            val unusable = bundle.getString("key8")
-            val pics1 = bundle.getByteArray("key9")
-        }
+
+
+     /*   setFragmentResultListener("key"){requestKey, bundle ->
+            listId = bundle.getString("key1")
+            name = bundle.getString("key2")
+            type = bundle.getString("key3")
+            number = bundle.getString("key4")
+            dateOpened = bundle.getString("key5")
+            status = bundle.getString("key6")
+            review = bundle.getString("key7")
+            //pics1 = bundle.getByteArray("key9")
+        }*/
 
         spType03!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
@@ -103,6 +110,8 @@ class CurrentDeviceInfoFragment : Fragment() {
             extras = intent?.extras
         }
 
+        listId = extras?.getString("listId")
+
         return view
     }
 
@@ -111,6 +120,42 @@ class CurrentDeviceInfoFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(this){
             isEnabled = false
         }
+    }
+
+    private fun loadMyList() {
+
+        //ArrayAdapterに対してListViewのリスト(items)の更新
+        items!!.clear()
+        cddbAdapter!!.openDB() // DBの読み込み(読み書きの方)
+
+        // DBのデータを取得
+        val c = cddbAdapter!!.selectDB(columns,listId!!)
+        if (c.moveToFirst()) {
+            do {
+                // MyListItemのコンストラクタ呼び出し(myListItemのオブジェクト生成)
+                myCurrentItem = MyCurrentItem(
+                    c.getInt(0),
+                    c.getString(1),
+                    c.getString(2),
+                    c.getString(3),
+                    c.getString(4),
+                    c.getString(5),
+                    c.getString(6)
+                )
+                Log.d("取得したCursor(ID):", c.getInt(0).toString())
+                Log.d("取得したCursor(品名):", c.getString(1))
+                Log.d("取得したCursor(メーカー):", c.getString(2))
+                Log.d("取得したCursor(大分類):",c.getString(3))
+                Log.d("取得したCursor(小分類)",c.getString(4))
+                Log.d("取得したCursor(定数):", c.getString(5).toString())
+                Log.d("取得したCursor(在庫数):", c.getString(6).toString())
+                items!!.add(myCurrentItem!!) // 取得した要素をitemsに追加
+            } while (c.moveToNext())
+        }
+        c.close()
+        cddbAdapter!!.closeDB() // DBを閉じる
+
+       // myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
     }
 
     fun onClickWarehouseButton(view: View){

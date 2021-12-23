@@ -6,5 +6,6 @@ import android.os.Bundle
 class CurrentDeviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_current_device)
     }
 }

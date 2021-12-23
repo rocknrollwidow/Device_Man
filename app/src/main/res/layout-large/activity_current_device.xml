@@ -11,12 +11,14 @@
     <!--Todo fragment_current_list,fragment_current_device_infoをinflate-->
 
     <fragment
+        android:id="@+id/frCurrentList"
         android:name="com.ro.android.device_man.CurrentListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.4" />
 
     <FrameLayout
+        android:id="@+id/currentDeviceFrame"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.6"/>

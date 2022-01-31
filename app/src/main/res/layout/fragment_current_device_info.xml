@@ -19,148 +19,54 @@
 
     <EditText
         android:id="@+id/etname03"
-        android:layout_width="678dp"
+        android:layout_width="500dp"
         android:layout_height="62dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
-        android:textSize="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <Spinner
-        android:id="@+id/sptype03"
-        android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/tvtype03"
+    <EditText
+        android:id="@+id/etnumber03"
+        android:layout_width="58dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/tvnumber03"
         app:layout_constraintTop_toBottomOf="@+id/etname03"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tvdateopened03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="88dp"
-        android:text="@string/tv_date_opened04"
-        android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/etstatus03"
+    <Button
+        android:id="@+id/btdatepicker03"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintStart_toEndOf="@+id/etdateopened03"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <TextView
-        android:id="@+id/tvpics03"
+        android:id="@+id/tvstatus03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="316dp"
-        android:text="@string/tv_pics04"
-        android:textSize="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/tv_status04"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <EditText
         android:id="@+id/etdateopened03"
         android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:textSize="26dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="64dp"
+        android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/tvdateopened03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <TextureView
-        android:id="@+id/ttv_pics03_1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="312dp"
-        app:layout_constraintStart_toEndOf="@+id/tvpics03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <TextureView
-        android:id="@+id/ttv_pics03_2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="312dp"
-        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_1"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <TextureView
-        android:id="@+id/ttv_pics03_3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="312dp"
-        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_2"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <TextureView
-        android:id="@+id/ttv_pics03_4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="312dp"
-        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_3"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <TextView
-        android:id="@+id/tvtype03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/tv_type04"
-        android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/etnumber03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <EditText
-        android:id="@+id/etreview03"
-        android:layout_width="673dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="192dp"
-        android:inputType="textMultiLine"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etname03"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tvstatus03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="88dp"
-        android:text="@string/tv_status04"
-        android:textSize="26dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <EditText
-        android:id="@+id/etstatus03"
-        android:layout_width="160dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
-        android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/tvstatus03"
-        app:layout_constraintTop_toBottomOf="@+id/etname03"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/etnumber03"
-        android:layout_width="107dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:textSize="26dp"
-        app:layout_constraintStart_toEndOf="@+id/tvnumber03"
         app:layout_constraintTop_toBottomOf="@+id/etname03"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -168,21 +74,10 @@
         android:id="@+id/tvnumber03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_number03"
-        android:textSize="26dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <TextView
-        android:id="@+id/tvreview03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="148dp"
-        android:text="@string/tv_review04"
-        android:textSize="26dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
@@ -190,42 +85,147 @@
         android:id="@+id/btupdate03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="476dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="336dp"
         android:text="@string/bt_update03"
-        android:textSize="40dp"
+        android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
-    <Button
-        android:id="@+id/btaddpics03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="356dp"
-        android:text="@string/bt_add_pics03"
-        android:textSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextureView
+        android:id="@+id/ttv_pics03_2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_1"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <Button
         android:id="@+id/btdispose03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="476dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="336dp"
         android:text="@string/bt_dispose03"
-        android:textSize="40dp"
+        android:textSize="22dp"
         app:layout_constraintStart_toEndOf="@+id/btupdate03"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <Button
-        android:id="@+id/btdatepicker03"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintStart_toEndOf="@+id/etdateopened03"
+        android:id="@+id/btaddpics03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="264dp"
+        android:text="@string/bt_add_pics03"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextureView
+        android:id="@+id/ttv_pics03_4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_3"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextureView
+        android:id="@+id/ttv_pics03_3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintStart_toEndOf="@+id/ttv_pics03_2"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextView
+        android:id="@+id/tvpics03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="232dp"
+        android:text="@string/tv_pics04"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextureView
+        android:id="@+id/ttv_pics03_1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpics03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextView
+        android:id="@+id/tvreview03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/tv_review04"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <TextView
+        android:id="@+id/tvdateopened03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/tv_date_opened04"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/spstatus03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <Spinner
+        android:id="@+id/spstatus03"
+        android:layout_width="130dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/tvstatus03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/etreview03"
+        android:layout_width="500dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="148dp"
+        android:inputType="textMultiLine"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvtype03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_type04"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/etnumber03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03" />
+
+    <Spinner
+        android:id="@+id/sptype03"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/tvtype03"
+        app:layout_constraintTop_toBottomOf="@+id/etname03"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

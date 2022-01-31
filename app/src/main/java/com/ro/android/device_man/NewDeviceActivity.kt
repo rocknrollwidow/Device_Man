@@ -145,7 +145,7 @@ private fun saveList() {
         dbAdapter.openDB() // DBの読み書き
         dbAdapter.saveDB(strName04, strType04, strNumber04, strDateOpened04, strStatus04, strReview04) // DBに登録
         dbAdapter.closeDB() // DBを閉じる
-        Toast.makeText(this@NewDeviceActivity, "物品を追加しました。", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@NewDeviceActivity, "処置具を追加しました。", Toast.LENGTH_SHORT).show()
         init() // 初期値設定
     }
 }

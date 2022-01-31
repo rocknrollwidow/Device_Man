@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickCurrent(view: View){
-        myIntent = Intent(this@MainActivity,CategoryActivity::class.java)
+        myIntent = Intent(this@MainActivity,CurrentDeviceActivity::class.java)
         startActivity(myIntent)
     }
 

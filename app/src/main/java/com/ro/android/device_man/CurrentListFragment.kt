@@ -7,6 +7,7 @@ import android.text.Layout
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -14,30 +15,27 @@ import androidx.fragment.app.setFragmentResult
 
 //Todo 画像の取り扱いが未実装
 
-class CurrentListFragment : Fragment(){
+class CurrentListFragment : Fragment() {
     private var cddbAdapter: CDDBAdapter? = null
     private var myBaseAdapter: MyBaseAdapter? = null
     private var items: MutableList<MyCurrentItem>? = null
     private var mlvCurrent: ListView? = null
     private var myCurrentItem: MyCurrentItem? = null
     private val columns: Array<String?>? = null
-
+    private var type: String? = null
     private  var _isLayoutXLarge = true
+
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState:  Bundle?): View?{
         val view = inflater.inflate(R.layout.fragment_current_list,container,false)
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         items = ArrayList()
         cddbAdapter = CDDBAdapter(this.requireContext())
         myBaseAdapter = MyBaseAdapter(this.requireContext(),items as ArrayList<MyCurrentItem>)
         mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
         mlvCurrent!!.onItemClickListener = ListItemClickListener()
         loadMyList()
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,12 +50,21 @@ class CurrentListFragment : Fragment(){
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        requireActivity().onBackPressedDispatcher.addCallback(this){
+            isEnabled = false
+        }
+    }
 
-    private fun loadMyList() {
+     fun loadMyList() {
 
         //ArrayAdapterに対してListViewのリスト(items)の更新
         items!!.clear()
         cddbAdapter!!.openDB() // DBの読み込み(読み書きの方)
+
+        val columns: Array<String?>? = null
+        //val selection = "type = '${type}'"//WHERE句の作成
 
         // DBのデータを取得
         val c = cddbAdapter!!.getDB(columns)
@@ -72,7 +79,6 @@ class CurrentListFragment : Fragment(){
                     c.getString(4),
                     c.getString(5),
                     c.getString(6)
-
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -99,13 +105,18 @@ class CurrentListFragment : Fragment(){
             val dateOpened = item.date_opened
             val status = item.status
             val review = item.review
-          //  val unusable = item.unusable
         //    val pics1 = item.pics
 
             // 引き継ぎデータをまとめて格納できるBundleオブジェクト生成。
             val bundle = Bundle()
             // Bundleオブジェクトに引き継ぎデータを格納。
             bundle.putString("listId", listId.toString())
+            bundle.putString("name",name)
+            bundle.putString("type",type)
+            bundle.putString("number",number)
+            bundle.putString("dateOpened",dateOpened)
+            bundle.putString("status",status)
+            bundle.putString("review",review)
 
             // フラグメントトランザクションの開始。
             val transaction = fragmentManager?.beginTransaction()
@@ -117,22 +128,6 @@ class CurrentListFragment : Fragment(){
             transaction?.replace(R.id.currentDeviceFrame, currentDeviceInfoFragment)
             // フラグメントトランザクションのコミット。
             transaction?.commit()
-
-
-
-
-            setFragmentResult("key", bundleOf(
-                "key1" to listId,
-                "key2" to name,
-                "key3" to type,
-                "key4" to number,
-                "key5" to dateOpened,
-                "key6" to status,
-                "key7" to review
-            //    "key8" to unusable,
-            //    "key9" to pics1
-            ))
-
 
         }
     }
@@ -192,10 +187,4 @@ class CurrentListFragment : Fragment(){
             return view
         }
     }
-
-    }
-
-
-
-
-
+}

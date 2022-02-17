@@ -37,14 +37,10 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var etReview03: EditText? = null
     private var ttvPic03_1: TextureView? = null
     private var ttvPic03_2: TextureView? = null
-    private var ttvPic03_3: TextureView? = null
-    private var ttvPic03_4: TextureView? = null
     private var btAddPics03: Button? = null
     private var btUpdate03: Button? = null
     private var btDispose03: Button? = null
     private var btDatePicker03: Button? = null
-    private var myCurrentItem: MyCurrentItem? = null
-    private var columns: Array<String?>? = null
     private var name: String? = null
     private var type: String? = null
     private var number: String? = null
@@ -55,7 +51,6 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var status_spAdapter: ArrayAdapter<*>? = null
     private var typeArray: Array<String?>? = null
     private var statusArray: Array<String?>? = null
-    private var myCurrentListFragment: CurrentListFragment? = null
 
     companion object{
         @SuppressLint("StaticFieldLeak")
@@ -106,7 +101,7 @@ class CurrentDeviceInfoFragment : Fragment() {
             ArrayAdapter<String?>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, typeArray!!)
         type_spAdapter!!.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
         spStatus03!!.adapter = status_spAdapter
-        spType03!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spStatus03!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 val text = parent?.selectedItem as String
             }
@@ -127,6 +122,7 @@ class CurrentDeviceInfoFragment : Fragment() {
 
             showDatePicker(view)
         }
+
         btUpdate03!!.setOnClickListener { v -> // キーボードを非表示
             val inputMethodManager =
                 requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -134,6 +130,36 @@ class CurrentDeviceInfoFragment : Fragment() {
             // DBに登録
             onClickUpdateCurrent(view)
         }
+
+        btDispose03!!.setOnClickListener{ v ->
+            val inputMethodManager =
+                requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+
+            val id = listId.toString()
+            val name = etName03!!.text.toString()
+            val type = spType03!!.selectedItem.toString()
+            val dateopened = etDateOpened03!!.text.toString()
+            val number = etNumber03!!.text.toString()
+            val status = spStatus03!!.selectedItem.toString()
+            val review = etReview03!!.text.toString()
+
+            // 引き継ぎデータをまとめて格納できるBundleオブジェクト生成。
+            val bundle = Bundle()
+            // Bundleオブジェクトに引き継ぎデータを格納。
+            bundle.putString("listId", listId.toString())
+            bundle.putString("name",name)
+            bundle.putString("type",type)
+            bundle.putString("number",number)
+            bundle.putString("dateOpened",dateOpened)
+            bundle.putString("status",status)
+            bundle.putString("review",review)
+
+            val newFragment = DisposeFragment()
+            newFragment.arguments = bundle
+            newFragment.show(childFragmentManager,"DisposeFragment")
+        }
+
 
         var indexType: Int = 0
         var indexStatus: Int = 0
@@ -146,10 +172,11 @@ class CurrentDeviceInfoFragment : Fragment() {
         review = arguments?.getString("review")
 
         when(type){
-            "EGD"->{indexType = 0}
-            "TCS"->{indexType = 1}
-            "ERCP・DBE"->{indexType = 2}
-            else->{indexType = 3}
+            "EGD"->{indexType = 1}
+            "TCS"->{indexType = 2}
+            "ERCP・DBE"->{indexType = 3}
+            "その他"->{indexType = 4}
+            else->{indexType = 0}
         }
 
         when(status){
@@ -193,4 +220,5 @@ class CurrentDeviceInfoFragment : Fragment() {
         val newFragment = CurrentDeviceDatePicker()
         newFragment.show(childFragmentManager,"datePicker")
     }
+
 }

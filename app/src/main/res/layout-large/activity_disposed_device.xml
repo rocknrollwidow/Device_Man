@@ -11,14 +11,16 @@
     <!--Todo fragment_disposed_list,fragment_disposed_deviceinfoをinflate-->
 
     <fragment
+        android:id="@+id/frDisposedList"
         android:name="com.ro.android.device_man.DisposedListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.4" />
+        android:layout_weight="0.2" />
 
     <FrameLayout
+        android:id="@+id/disposedDeviceFrame"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.6"/>
+        android:layout_weight="0.8"/>
 
 </LinearLayout>

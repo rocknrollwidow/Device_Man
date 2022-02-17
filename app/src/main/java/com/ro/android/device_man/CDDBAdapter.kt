@@ -187,9 +187,9 @@ class CDDBAdapter (private var context: Context ) {
          * @param position String
          */
         fun selectDelete(position: String) {
-            openDB()
+
             db!!.delete(DB_TABLE, COL_ID + "=?", arrayOf(position))
-            closeDB()
+
         }
 
         /**
@@ -218,6 +218,23 @@ class CDDBAdapter (private var context: Context ) {
                         + COL_REVIEW + " TEXT NULL"
                         + ");")
                 db.execSQL(createTbl) //SQL文の実行
+
+                val createTbl2 = ("CREATE TABLE " + DDDBAdapter.DB_TABLE + " ("
+                        + DDDBAdapter.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        + DDDBAdapter.COL_NAME + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_TYPE + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_NUMBER + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_DATE_OPENED + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_DATE_DISPOSED + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_REASON + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_REVIEW + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_STATUS + " TEXT NOT NULL,"
+                        + DDDBAdapter.COL_STAFF + " TEXT NOT NULL"
+                        + ");")
+
+                println("--------------createTble 2")
+                db.execSQL(createTbl2) //SQL文の実行
+
             }
 
             /**
@@ -230,6 +247,7 @@ class CDDBAdapter (private var context: Context ) {
             override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
                 // DBからテーブル削除
                 db.execSQL("DROP TABLE IF EXISTS" + DB_TABLE)
+                db.execSQL("DROP TABLE IF EXISTS" + DDDBAdapter.DB_TABLE)
                 // テーブル生成
                 onCreate(db)
             }

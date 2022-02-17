@@ -43,8 +43,10 @@
     <string name="tv_review05">備考：</string>
     <string name="tv_reason05">廃棄理由：</string>
     <string name="tv_pics05">画像情報：</string>
+    <string name="tv_staff05">更新者：</string>
     <string name="bt_add_pics05">画像を追加</string>
     <string name="bt_update05">情報を更新</string>
+
 
     <!--dialog_dispose-->
     <string name="tv_date_disposed06">廃棄日：</string>
@@ -67,6 +69,7 @@
 
     <!--categoryL spItem-->
     <string-array name="sp_type">
+        <item>  </item>
         <item>EGD</item>
         <item>TCS</item>
         <item>ERCP・DBE</item>

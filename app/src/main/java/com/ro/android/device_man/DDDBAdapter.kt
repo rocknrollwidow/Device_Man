@@ -10,7 +10,7 @@ import java.lang.Exception
 //廃棄済み処置具のDBA
 class DDDBAdapter (private var context: Context ) {
     private var db: SQLiteDatabase? = null // SQLiteDatabase
-    private var dbHelper: DBHelper? = null // DBHepler
+    private var dbHelper: DBHelper? = null // DBHelper
 
     /**
      * DBの読み書き
@@ -49,7 +49,8 @@ class DDDBAdapter (private var context: Context ) {
      *
      */
     fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
-               reason: String,review: String,unusable: String,staff: String,pics: ByteArray){
+               reason: String,review: String,status: String,staff: String){
+
         db!!.beginTransaction() // トランザクション開始
         try {
             val values = ContentValues() // ContentValuesでデータを設定していく
@@ -60,9 +61,9 @@ class DDDBAdapter (private var context: Context ) {
             values.put(COL_DATE_DISPOSED,date_disposed)
             values.put(COL_REASON,reason)
             values.put(COL_REVIEW,review)
-            values.put(COL_UNUSABLE,unusable)
+            values.put(COL_STATUS,status)
             values.put(COL_STAFF,staff)
-            values.put(COL_PICS,pics)
+            //values.put(COL_PICS,pics)
 
             // insertメソッド データ登録
             // 第1引数：DBのテーブル名
@@ -112,7 +113,7 @@ class DDDBAdapter (private var context: Context ) {
     }
 
     fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
-                 reason: String,review: String,unusable: String,staff: String,pics: ByteArray){
+                 reason: String,review: String,status: String,staff: String){
 
         openDB()
 
@@ -124,9 +125,9 @@ class DDDBAdapter (private var context: Context ) {
         values.put(COL_DATE_DISPOSED,date_disposed)
         values.put(COL_REASON,reason)
         values.put(COL_REVIEW,review)
-        values.put(COL_UNUSABLE,unusable)
+        values.put(COL_STATUS,status)
         values.put(COL_STAFF,staff)
-        values.put(COL_PICS,pics)
+        //values.put(COL_PICS,pics)
         db!!.update(DB_TABLE,values,"_id = ?",arrayOf(id))
 
         closeDB()
@@ -223,9 +224,8 @@ class DDDBAdapter (private var context: Context ) {
                     + COL_DATE_DISPOSED + " TEXT NOT NULL,"
                     + COL_REASON + " TEXT NOT NULL,"
                     + COL_REVIEW + " TEXT NOT NULL,"
-                    + COL_UNUSABLE + " TEXT NOT NULL,"
-                    + COL_STAFF + " TEXT NOT NULL,"
-                    + COL_PICS + " BLOB NOT NULL"
+                    + COL_STATUS + " TEXT NOT NULL,"
+                    + COL_STAFF + " TEXT NOT NULL"
                     + ");")
             db.execSQL(createTbl) //SQL文の実行
         }
@@ -261,7 +261,7 @@ class DDDBAdapter (private var context: Context ) {
         const val COL_DATE_DISPOSED = "date_disposed" // 廃棄日
         const val COL_REASON = "reason" // 廃棄理由
         const val COL_REVIEW = "review" // 備考
-        const val COL_UNUSABLE = "unusable" // 使用可否
+        const val COL_STATUS = "status" // 使用可否
         const val COL_STAFF = "staff" // 対応者
         const val COL_PICS = "pics" // 画像
     }

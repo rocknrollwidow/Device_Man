@@ -6,5 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 class DisposedDeviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_disposed_device)
     }
 }

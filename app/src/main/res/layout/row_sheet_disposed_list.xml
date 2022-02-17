@@ -16,15 +16,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="98dp"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="@string/tv_disposed_date_disposed"/>
+            android:text="@string/tv_disposed_date_disposed"
+            android:textSize="18dp" />
         <TextView
             android:id="@+id/tv_disposed_date08"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textSize="20dp"/>
+            android:textSize="18dp"/>
 
     </LinearLayout>
 </LinearLayout>

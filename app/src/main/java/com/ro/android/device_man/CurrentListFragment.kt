@@ -1,17 +1,17 @@
 package com.ro.android.device_man
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.FragmentTransaction
 
 //Todo 画像の取り扱いが未実装
 
@@ -20,22 +20,47 @@ class CurrentListFragment : Fragment() {
     private var myBaseAdapter: MyBaseAdapter? = null
     private var items: MutableList<MyCurrentItem>? = null
     private var mlvCurrent: ListView? = null
+    private var spType07: Spinner? = null
+    private var typeArray: Array<String?>? = null
+    private var type_spAdapter: ArrayAdapter<*>? = null
     private var myCurrentItem: MyCurrentItem? = null
     private val columns: Array<String?>? = null
-    private var type: String? = null
-    private  var _isLayoutXLarge = true
-
+    private var _isLayoutXLarge = true
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState:  Bundle?): View?{
         val view = inflater.inflate(R.layout.fragment_current_list,container,false)
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         items = ArrayList()
         cddbAdapter = CDDBAdapter(this.requireContext())
-        myBaseAdapter = MyBaseAdapter(this.requireContext(),items as ArrayList<MyCurrentItem>)
+        myBaseAdapter = MyBaseAdapter(this.requireContext(), items as ArrayList<MyCurrentItem>)
+        spType07 = view.findViewById(R.id.sptype07) as Spinner
         mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
+        typeArray = resources.getStringArray(R.array.sp_type)
+        type_spAdapter =
+            ArrayAdapter<String?>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, typeArray!!)
+        type_spAdapter!!.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
+        spType07!!.adapter = type_spAdapter
+        spType07!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
+                val text = parent?.selectedItem as String
+               if(text==""){
+                   loadMyList()
+               }else {
+                   selectMyList(text)
+               }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        }
+
         mlvCurrent!!.onItemClickListener = ListItemClickListener()
+
         loadMyList()
-        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,14 +82,14 @@ class CurrentListFragment : Fragment() {
         }
     }
 
-     fun loadMyList() {
+     private fun loadMyList() {
 
         //ArrayAdapterに対してListViewのリスト(items)の更新
         items!!.clear()
         cddbAdapter!!.openDB() // DBの読み込み(読み書きの方)
 
         val columns: Array<String?>? = null
-        //val selection = "type = '${type}'"//WHERE句の作成
+   //     val selection = "type = '${type}'"//WHERE句の作成
 
         // DBのデータを取得
         val c = cddbAdapter!!.getDB(columns)
@@ -93,6 +118,44 @@ class CurrentListFragment : Fragment() {
         mlvCurrent!!.adapter = myBaseAdapter // ListViewにmyBaseAdapterをセット
         myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
     }
+
+    private fun selectMyList(type: String) {
+
+        //ArrayAdapterに対してListViewのリスト(items)の更新
+        items!!.clear()
+        cddbAdapter!!.openDB() // DBの読み込み(読み書きの方)
+
+        val columns: Array<String?>? = null
+        val selection = "type = '${type}'"//WHERE句の作成
+
+        // DBのデータを取得
+        val c = cddbAdapter!!.selectDB(columns,selection)
+        if (c.moveToFirst()) {
+            do {
+                // MyListItemのコンストラクタ呼び出し(myListItemのオブジェクト生成)
+                myCurrentItem = MyCurrentItem(
+                    c.getInt(0),
+                    c.getString(1),
+                    c.getString(2),
+                    c.getString(3),
+                    c.getString(4),
+                    c.getString(5),
+                    c.getString(6)
+                )
+                Log.d("取得したCursor(ID):", c.getInt(0).toString())
+                Log.d("取得したCursor(Name):", c.getString(1))
+                Log.d("取得したCursor(Type):", c.getString(2))
+                Log.d("取得したCursor(Number):",c.getString(3))
+
+                items!!.add(myCurrentItem!!) // 取得した要素をitemsに追加
+            } while (c.moveToNext())
+        }
+        c.close()
+        cddbAdapter!!.closeDB() // DBを閉じる
+        mlvCurrent!!.adapter = myBaseAdapter // ListViewにmyBaseAdapterをセット
+        myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
+    }
+
 
     inner class ListItemClickListener : AdapterView.OnItemClickListener{
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long){

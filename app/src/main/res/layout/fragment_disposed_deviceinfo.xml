@@ -121,8 +121,8 @@
         app:layout_constraintStart_toEndOf="@+id/etdatedisposed05"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
-    <TextureView
-        android:id="@+id/ttv_pics05_1"
+    <ImageView
+        android:id="@+id/iv105"
         android:layout_width="63dp"
         android:layout_height="57dp"
         android:layout_marginStart="56dp"
@@ -162,13 +162,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
-    <TextureView
-        android:id="@+id/ttv_pics05_2"
+    <ImageView
+        android:id="@+id/iv205"
         android:layout_width="60dp"
         android:layout_height="55dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="248dp"
-        app:layout_constraintStart_toEndOf="@+id/ttv_pics05_1"
+        app:layout_constraintStart_toEndOf="@+id/iv105"
+        app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+    <ImageView
+        android:id="@+id/iv305"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="248dp"
+        app:layout_constraintStart_toEndOf="@+id/iv205"
+        app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+    <ImageView
+        android:id="@+id/iv405"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="248dp"
+        app:layout_constraintStart_toEndOf="@+id/iv305"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
     <EditText

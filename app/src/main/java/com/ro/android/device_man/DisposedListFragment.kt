@@ -21,6 +21,7 @@ class DisposedListFragment : Fragment(){
     private var type_spAdapter: ArrayAdapter<*>? = null
     private var myDisposedItem: MyDisposedItem? = null
     private var _isLayoutXLarge = true
+    private var mark: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:  Bundle?): View?{
         val view = inflater.inflate(R.layout.fragment_disposed_list,container,false)
@@ -96,8 +97,11 @@ class DisposedListFragment : Fragment(){
                     c.getString(6),
                     c.getString(7),
                     c.getString(8),
-                    c.getString(9)
-                  //  c.getBlob(11)
+                    c.getString(9),
+                    c.getString(10),
+                    c.getString(11),
+                    c.getString(12),
+                    c.getString(13)
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -136,8 +140,12 @@ class DisposedListFragment : Fragment(){
                     c.getString(6),
                     c.getString(7),
                     c.getString(8),
-                    c.getString(9)
-                    //  c.getBlob(11)
+                    c.getString(9),
+                    c.getString(10),
+                    c.getString(11),
+                    c.getString(12),
+                    c.getString(13)
+
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -167,7 +175,10 @@ class DisposedListFragment : Fragment(){
             val review = item.review
             val status = item.status
             val staff = item.staff
-            //    val pics1 = item.pics
+            val uri1 = item.uri1
+            val uri2 = item.uri2
+            val uri3 = item.uri3
+            val uri4 = item.uri4
 
             // 引き継ぎデータをまとめて格納できるBundleオブジェクト生成。
             val bundle = Bundle()
@@ -182,6 +193,10 @@ class DisposedListFragment : Fragment(){
             bundle.putString("review",review)
             bundle.putString("status",status)
             bundle.putString("staff",staff)
+            bundle.putString("uri1",uri1)
+            bundle.putString("uri2",uri2)
+            bundle.putString("uri3",uri3)
+            bundle.putString("uri4",uri4)
 
             // フラグメントトランザクションの開始。
             val transaction = fragmentManager?.beginTransaction()

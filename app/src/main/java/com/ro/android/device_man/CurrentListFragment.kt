@@ -26,21 +26,22 @@ class CurrentListFragment : Fragment() {
     private var myCurrentItem: MyCurrentItem? = null
     private val columns: Array<String?>? = null
     private var _isLayoutXLarge = true
+    private var mark: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState:  Bundle?): View?{
         val view = inflater.inflate(R.layout.fragment_current_list,container,false)
-
+        items = ArrayList()
+        cddbAdapter = CDDBAdapter(this.requireContext())
+        myBaseAdapter = MyBaseAdapter(this.requireContext(), items as ArrayList<MyCurrentItem>)
+        mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
+        loadMyList()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        items = ArrayList()
-        cddbAdapter = CDDBAdapter(this.requireContext())
-        myBaseAdapter = MyBaseAdapter(this.requireContext(), items as ArrayList<MyCurrentItem>)
         spType07 = view.findViewById(R.id.sptype07) as Spinner
-        mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
         typeArray = resources.getStringArray(R.array.sp_type)
         type_spAdapter =
             ArrayAdapter<String?>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, typeArray!!)
@@ -58,9 +59,7 @@ class CurrentListFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
 
-        mlvCurrent!!.onItemClickListener = ListItemClickListener()
-
-        loadMyList()
+        mlvCurrent?.onItemClickListener = ListItemClickListener()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -82,7 +81,7 @@ class CurrentListFragment : Fragment() {
         }
     }
 
-     private fun loadMyList() {
+     fun loadMyList() {
 
         //ArrayAdapterに対してListViewのリスト(items)の更新
         items!!.clear()
@@ -103,7 +102,11 @@ class CurrentListFragment : Fragment() {
                     c.getString(3),
                     c.getString(4),
                     c.getString(5),
-                    c.getString(6)
+                    c.getString(6),
+                    c.getString(7),
+                    c.getString(8),
+                    c.getString(9),
+                    c.getString(10)
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -119,7 +122,7 @@ class CurrentListFragment : Fragment() {
         myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
     }
 
-    private fun selectMyList(type: String) {
+     fun selectMyList(type: String) {
 
         //ArrayAdapterに対してListViewのリスト(items)の更新
         items!!.clear()
@@ -140,7 +143,11 @@ class CurrentListFragment : Fragment() {
                     c.getString(3),
                     c.getString(4),
                     c.getString(5),
-                    c.getString(6)
+                    c.getString(6),
+                    c.getString(7),
+                    c.getString(8),
+                    c.getString(9),
+                    c.getString(10)
                 )
                 Log.d("取得したCursor(ID):", c.getInt(0).toString())
                 Log.d("取得したCursor(Name):", c.getString(1))
@@ -168,7 +175,10 @@ class CurrentListFragment : Fragment() {
             val dateOpened = item.date_opened
             val status = item.status
             val review = item.review
-        //    val pics1 = item.pics
+            val uri1 = item.uri1
+            val uri2 = item.uri2
+            val uri3 = item.uri3
+            val uri4 = item.uri4
 
             // 引き継ぎデータをまとめて格納できるBundleオブジェクト生成。
             val bundle = Bundle()
@@ -180,6 +190,10 @@ class CurrentListFragment : Fragment() {
             bundle.putString("dateOpened",dateOpened)
             bundle.putString("status",status)
             bundle.putString("review",review)
+            bundle.putString("uri1",uri1)
+            bundle.putString("uri2",uri2)
+            bundle.putString("uri3",uri3)
+            bundle.putString("uri4",uri4)
 
             // フラグメントトランザクションの開始。
             val transaction = fragmentManager?.beginTransaction()

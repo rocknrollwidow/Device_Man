@@ -1,7 +1,7 @@
 package com.ro.android.device_man
 
 class MyCurrentItem (var ID: Int,var name: String,var type: String,var number: String,
-                     var date_opened: String,var status: String,var review: String) {
+                     var date_opened: String,var status: String,var review: String,var uri1: String,var uri2: String,var uri3: String,var uri4: String) {
 
     fun getId(): Int {
         return this.ID
@@ -15,6 +15,9 @@ class MyCurrentItem (var ID: Int,var name: String,var type: String,var number: S
         this.date_opened = date_opened
         this.status = status
         this.review = review
-     //   this.pics = pics
+        this.uri1 = uri1
+        this.uri2 = uri2
+        this.uri3 = uri3
+        this.uri4 = uri4
     }
 }

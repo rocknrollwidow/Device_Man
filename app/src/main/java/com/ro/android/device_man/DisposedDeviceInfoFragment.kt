@@ -2,6 +2,7 @@ package com.ro.android.device_man
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 
 class DisposedDeviceInfoFragment : Fragment() {
@@ -26,8 +28,10 @@ class DisposedDeviceInfoFragment : Fragment() {
     private var etReason05: EditText? = null
     private var spStatus05: Spinner? = null
     private var etStaff05: EditText? = null
-    private var ttvPic05_1: TextureView? = null
-    private var ttvPic05_2: TextureView? = null
+    private var iv1: ImageView? = null
+    private var iv2: ImageView? = null
+    private var iv3: ImageView? = null
+    private var iv4: ImageView? = null
     private var btAddPics05: Button? = null
     private var btUpdate05: Button? = null
     private var btDatePicker05: Button? = null
@@ -40,6 +44,10 @@ class DisposedDeviceInfoFragment : Fragment() {
     private var review: String? = null
     private var reason: String? = null
     private var staff: String? = null
+    private var uri1: Uri? = null
+    private var uri2: Uri? = null
+    private var uri3: Uri? = null
+    private var uri4: Uri? = null
     private var type_spAdapter: ArrayAdapter<*>? = null
     private var status_spAdapter: ArrayAdapter<*>? = null
     private var typeArray: Array<String?>? = null
@@ -86,6 +94,10 @@ class DisposedDeviceInfoFragment : Fragment() {
         btAddPics05 = view.findViewById<View>(R.id.btaddpics05) as Button
         btUpdate05 = view.findViewById<View>(R.id.btupdate05) as Button
         btDatePicker05 = view.findViewById<View>(R.id.btdatepicker05) as Button
+        iv1 = view.findViewById<View>(R.id.iv105) as ImageView
+        iv2 = view.findViewById<View>(R.id.iv205) as ImageView
+        iv3 = view.findViewById<View>(R.id.iv305) as ImageView
+        iv4 = view.findViewById<View>(R.id.iv405) as ImageView
 
         //Spinnerのinit
         statusArray = resources.getStringArray(R.array.sp_status)
@@ -138,6 +150,10 @@ class DisposedDeviceInfoFragment : Fragment() {
         review = arguments?.getString("review")
         status = arguments?.getString("status")
         staff = arguments?.getString("staff")
+        uri1 = arguments?.getString("uri1")!!.toUri()
+        uri2 = arguments?.getString("uri2")!!.toUri()
+        uri3 = arguments?.getString("uri3")!!.toUri()
+        uri4 = arguments?.getString("uri4")!!.toUri()
 
         when(type){
             "EGD"->{indexType = 1}
@@ -160,6 +176,10 @@ class DisposedDeviceInfoFragment : Fragment() {
         etReview05!!.setText(review)
         etReason05!!.setText(reason)
         etStaff05!!.setText(staff)
+        iv1!!.setImageURI(uri1)
+        iv2!!.setImageURI(uri2)
+        iv3!!.setImageURI(uri3)
+        iv4!!.setImageURI(uri4)
 
         return view
     }
@@ -183,8 +203,12 @@ class DisposedDeviceInfoFragment : Fragment() {
         val review = etReview05!!.text.toString()
         val reason = etReason05!!.text.toString()
         val staff = etStaff05!!.text.toString()
+        val struri1 = uri1.toString()
+        val struri2 = uri2.toString()
+        val struri3 = uri3.toString()
+        val struri4 = uri4.toString()
 
-        dddbAdapter!!.updateDB(id,name,type,number,dateopened,datedisposed,reason,review,status,staff)
+        dddbAdapter!!.updateDB(id,name,type,number,dateopened,datedisposed,reason,review,status,staff,struri1,struri2,struri3,struri4)
 
         Toast.makeText(this.requireContext(), "情報を変更しました。", Toast.LENGTH_SHORT).show()
     }

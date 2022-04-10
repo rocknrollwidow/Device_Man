@@ -81,10 +81,14 @@ class DisposeFragment : DialogFragment() {
         val review = arguments?.getString("review").toString()
         val status = arguments?.getString("status").toString()
         val staff = etStaff06!!.text.toString()
+        val uri1 = arguments?.getString("uri1").toString()
+        val uri2 = arguments?.getString("uri2").toString()
+        val uri3 = arguments?.getString("uri3").toString()
+        val uri4 = arguments?.getString("uri4").toString()
 
         val dddbAdapter = DDDBAdapter(this.requireContext())
         dddbAdapter.openDB()
-        dddbAdapter.saveDB(listId,name,type,number,dateOpened,dateDisposed,reason,review,status,staff)
+        dddbAdapter.saveDB(listId,name,type,number,dateOpened,dateDisposed,reason,review,status,staff,uri1,uri2,uri3,uri4)
         dddbAdapter.closeDB()
         val cdbAdapter = CDDBAdapter(this.requireContext())
         cdbAdapter.openDB() // DBの読み書き
@@ -92,7 +96,7 @@ class DisposeFragment : DialogFragment() {
         cdbAdapter.closeDB() // DBを閉じる
 
         Toast.makeText(this.requireContext(), "情報を変更しました。", Toast.LENGTH_SHORT).show()
-
+        this.dismiss()
     }
 
 

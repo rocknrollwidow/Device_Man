@@ -49,7 +49,7 @@ class DDDBAdapter (private var context: Context ) {
      *
      */
     fun saveDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
-               reason: String,review: String,status: String,staff: String){
+               reason: String,review: String,status: String,staff: String,uri1: String,uri2: String,uri3: String,uri4: String){
 
         db!!.beginTransaction() // トランザクション開始
         try {
@@ -63,7 +63,10 @@ class DDDBAdapter (private var context: Context ) {
             values.put(COL_REVIEW,review)
             values.put(COL_STATUS,status)
             values.put(COL_STAFF,staff)
-            //values.put(COL_PICS,pics)
+            values.put(COL_URI1,uri1)
+            values.put(COL_URI2,uri2)
+            values.put(COL_URI3,uri3)
+            values.put(COL_URI4,uri4)
 
             // insertメソッド データ登録
             // 第1引数：DBのテーブル名
@@ -113,7 +116,7 @@ class DDDBAdapter (private var context: Context ) {
     }
 
     fun updateDB(id: String,name: String,type: String,number: String,date_opened: String,date_disposed: String,
-                 reason: String,review: String,status: String,staff: String){
+                 reason: String,review: String,status: String,staff: String,uri1: String,uri2: String,uri3: String,uri4: String){
 
         openDB()
 
@@ -127,20 +130,15 @@ class DDDBAdapter (private var context: Context ) {
         values.put(COL_REVIEW,review)
         values.put(COL_STATUS,status)
         values.put(COL_STAFF,staff)
-        //values.put(COL_PICS,pics)
+        values.put(COL_URI1,uri1)
+        values.put(COL_URI2,uri2)
+        values.put(COL_URI3,uri3)
+        values.put(COL_URI4,uri4)
         db!!.update(DB_TABLE,values,"_id = ?",arrayOf(id))
 
         closeDB()
     }
 /*
-        fun changeQ(id: String,quantity:Int){
-            openDB()
-            val values = ContentValues()
-            values.put(COL_QUANTITY,quantity)
-            db!!.update(DB_TABLE,values,"_id = ?",arrayOf(id))
-            closeDB()
-        }
-
         fun changeC(id: String,constant: Int){
             openDB()
             val values = ContentValues()
@@ -225,7 +223,11 @@ class DDDBAdapter (private var context: Context ) {
                     + COL_REASON + " TEXT NOT NULL,"
                     + COL_REVIEW + " TEXT NOT NULL,"
                     + COL_STATUS + " TEXT NOT NULL,"
-                    + COL_STAFF + " TEXT NOT NULL"
+                    + COL_STAFF + " TEXT NOT NULL,"
+                    + COL_URI1 + " TEXT NULL,"
+                    + COL_URI2 + " TEXT NULL,"
+                    + COL_URI3 + " TEXT NULL,"
+                    + COL_URI4 + " TEXT NULL"
                     + ");")
             db.execSQL(createTbl) //SQL文の実行
         }
@@ -263,7 +265,10 @@ class DDDBAdapter (private var context: Context ) {
         const val COL_REVIEW = "review" // 備考
         const val COL_STATUS = "status" // 使用可否
         const val COL_STAFF = "staff" // 対応者
-        const val COL_PICS = "pics" // 画像
+        const val COL_URI1 = "uri1" // 画像1
+        const val COL_URI2 = "uri2" // 画像2
+        const val COL_URI3 = "uri3" // 画像1
+        const val COL_URI4 = "uri4" // 画像2
     }
 
     // コンストラクタ

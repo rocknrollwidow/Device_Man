@@ -87,40 +87,44 @@
         app:layout_constraintTop_toBottomOf="@+id/tvname04"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextureView
-        android:id="@+id/textureView1"
+    <ImageView
+        android:id="@+id/iv104"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
+        android:onClick="onItemClick_iv1"
         app:layout_constraintStart_toEndOf="@+id/etreview04"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
-    <TextureView
-        android:id="@+id/textureView3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/textureView2"
-        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
-
-    <TextureView
-        android:id="@+id/textureView4"
+    <ImageView
+        android:id="@+id/iv204"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/textureView3"
+        android:onClick="onItemClick_iv2"
+        app:layout_constraintStart_toEndOf="@+id/iv104"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
-    <TextureView
-        android:id="@+id/textureView2"
+    <ImageView
+        android:id="@+id/iv304"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/textureView1"
+        android:onClick="onItemClick_iv3"
+        app:layout_constraintStart_toEndOf="@+id/iv204"
+        app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
+
+    <ImageView
+        android:id="@+id/iv404"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:onClick="onItemClick_iv4"
+        app:layout_constraintStart_toEndOf="@+id/iv304"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <TextView

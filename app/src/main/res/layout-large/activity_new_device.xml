@@ -5,12 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:ignore="MissingDefaultResource">
-
-    <!--Todo 2-->
-    <!--Todo 画像情報下のTextureViewタップ → カメラ起動 or 画像を拡大-->
-    <!--Todo "新規登録"buttonをタップ → 各EditTextに入力した内容をcurrentSheetへ保存-->
-    <!--Todo データベースへの登録完了と同時にEditTextをClear-->
 
     <TextView
         android:id="@+id/tvname04"
@@ -67,6 +63,50 @@
         app:layout_constraintStart_toEndOf="@+id/tvreview04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
+    <TextView
+        android:id="@+id/tvpicsub104"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic1"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/etreview04"
+        app:layout_constraintTop_toBottomOf="@+id/iv104" />
+
+    <TextView
+        android:id="@+id/tvpicsub204"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic2"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub104"
+        app:layout_constraintTop_toBottomOf="@+id/iv204" />
+
+    <TextView
+        android:id="@+id/tvpicsub304"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic3"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub204"
+        app:layout_constraintTop_toBottomOf="@+id/iv304" />
+
+    <TextView
+        android:id="@+id/tvpicsub404"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic4"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub304"
+        app:layout_constraintTop_toBottomOf="@+id/iv404" />
+
     <EditText
         android:id="@+id/etdateopened04"
         android:layout_width="180dp"
@@ -78,51 +118,46 @@
         app:layout_constraintTop_toBottomOf="@+id/tvname04"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/btaddpics04"
-        android:layout_width="134dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="148dp"
-        app:layout_constraintStart_toEndOf="@+id/tvpics04"
-        app:layout_constraintTop_toBottomOf="@+id/tvname04"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <ImageView
         android:id="@+id/iv104"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/border_imageview"
         android:onClick="onItemClick_iv1"
         app:layout_constraintStart_toEndOf="@+id/etreview04"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <ImageView
         android:id="@+id/iv204"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/border_imageview"
         android:onClick="onItemClick_iv2"
         app:layout_constraintStart_toEndOf="@+id/iv104"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <ImageView
         android:id="@+id/iv304"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/border_imageview"
         android:onClick="onItemClick_iv3"
         app:layout_constraintStart_toEndOf="@+id/iv204"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
 
     <ImageView
         android:id="@+id/iv404"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/border_imageview"
         android:onClick="onItemClick_iv4"
         app:layout_constraintStart_toEndOf="@+id/iv304"
         app:layout_constraintTop_toBottomOf="@+id/tvpics04" />
@@ -207,12 +242,14 @@
 
     <Button
         android:id="@+id/btadd04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="576dp"
-        android:layout_marginTop="340dp"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="596dp"
+        android:layout_marginTop="388dp"
+        android:background="@color/olympus_blue"
         android:text="@string/bt_add04"
-        android:textSize="50dp"
+        android:textColor="@color/white"
+        android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 
@@ -222,6 +259,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:onClick="showDatePickerDialog"
+        android:background="@color/olympus_blue"
         app:layout_constraintStart_toEndOf="@+id/etdateopened04"
         app:layout_constraintTop_toBottomOf="@+id/tvname04" />
 </androidx.constraintlayout.widget.ConstraintLayout>

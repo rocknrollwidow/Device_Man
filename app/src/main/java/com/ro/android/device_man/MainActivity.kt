@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onClickCurrent(view: View){
         myIntent = Intent(this@MainActivity,CurrentDeviceActivity::class.java)
+        println("-;-;-;-;-;-;-;-;-;-;-;-;-;-;-;-MainActivity---onClickCurrent")
         startActivity(myIntent)
     }
 

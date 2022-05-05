@@ -2,18 +2,19 @@ package com.ro.android.device_man
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-
-//Todo 画像の取り扱いが未実装
 
 class CurrentListFragment : Fragment() {
     private var cddbAdapter: CDDBAdapter? = null
@@ -24,23 +25,20 @@ class CurrentListFragment : Fragment() {
     private var typeArray: Array<String?>? = null
     private var type_spAdapter: ArrayAdapter<*>? = null
     private var myCurrentItem: MyCurrentItem? = null
-    private val columns: Array<String?>? = null
     private var _isLayoutXLarge = true
-    private var mark: Int = 0
 
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState:  Bundle?): View?{
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_current_list,container,false)
+        mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
         items = ArrayList()
         cddbAdapter = CDDBAdapter(this.requireContext())
         myBaseAdapter = MyBaseAdapter(this.requireContext(), items as ArrayList<MyCurrentItem>)
-        mlvCurrent = view.findViewById(R.id.lvCurrent) as ListView
         loadMyList()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         spType07 = view.findViewById(R.id.sptype07) as Spinner
         typeArray = resources.getStringArray(R.array.sp_type)
         type_spAdapter =
@@ -62,6 +60,7 @@ class CurrentListFragment : Fragment() {
         mlvCurrent?.onItemClickListener = ListItemClickListener()
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         // 親クラスのメソッド呼び出し。
         super.onActivityCreated(savedInstanceState)
@@ -78,6 +77,7 @@ class CurrentListFragment : Fragment() {
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(this){
             isEnabled = false
+            requireActivity().finish()
         }
     }
 
@@ -108,10 +108,6 @@ class CurrentListFragment : Fragment() {
                     c.getString(9),
                     c.getString(10)
                 )
-                Log.d("取得したCursor(ID):", c.getInt(0).toString())
-                Log.d("取得したCursor(Name):", c.getString(1))
-                Log.d("取得したCursor(Type):", c.getString(2))
-                Log.d("取得したCursor(Number):",c.getString(3))
 
                 items!!.add(myCurrentItem!!) // 取得した要素をitemsに追加
             } while (c.moveToNext())
@@ -149,10 +145,6 @@ class CurrentListFragment : Fragment() {
                     c.getString(9),
                     c.getString(10)
                 )
-                Log.d("取得したCursor(ID):", c.getInt(0).toString())
-                Log.d("取得したCursor(Name):", c.getString(1))
-                Log.d("取得したCursor(Type):", c.getString(2))
-                Log.d("取得したCursor(Number):",c.getString(3))
 
                 items!!.add(myCurrentItem!!) // 取得した要素をitemsに追加
             } while (c.moveToNext())
@@ -162,7 +154,6 @@ class CurrentListFragment : Fragment() {
         mlvCurrent!!.adapter = myBaseAdapter // ListViewにmyBaseAdapterをセット
         myBaseAdapter!!.notifyDataSetChanged() // Viewの更新
     }
-
 
     inner class ListItemClickListener : AdapterView.OnItemClickListener{
         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long){
@@ -216,6 +207,7 @@ class CurrentListFragment : Fragment() {
         private inner class ViewHolder {
             var tv_current_name: TextView? = null
             var tv_current_number: TextView? = null
+            var tv_current_num_sub: TextView? = null
         }
 
         // Listの要素数を返す
@@ -247,11 +239,13 @@ class CurrentListFragment : Fragment() {
                     view.findViewById<View>(R.id.tv_current_name07) as TextView // 品名のTextView
                 val tv_current_number =
                     view.findViewById<View>(R.id.tv_current_number07) as TextView //規格のTextView
+                val tv_current_num_sub = view.findViewById<View>(R.id.tv_current_num_sub07) as TextView
 
                 // holderにviewを持たせておく
                 holder = ViewHolder()
                 holder.tv_current_name = tv_current_name
                 holder.tv_current_number = tv_current_number
+                holder.tv_current_num_sub = tv_current_num_sub
                 view.tag = holder
             } else {
                 // 初めて表示されるときにつけておいたtagを元にviewを取得する
@@ -259,8 +253,14 @@ class CurrentListFragment : Fragment() {
             }
 
             // 取得した各データを各TextViewにセット
-            holder.tv_current_name!!.text = myCurrentItem!!.name
-            holder.tv_current_number!!.text = myCurrentItem!!.number
+            holder.tv_current_name?.text = myCurrentItem!!.name
+            holder.tv_current_number?.text = myCurrentItem!!.number
+            if(myCurrentItem?.review != "") {
+                holder.tv_current_name?.setTextColor(Color.YELLOW)
+                holder.tv_current_number?.setTextColor(Color.YELLOW)
+                holder.tv_current_num_sub?.setTextColor(Color.YELLOW)
+            }
+
             return view
         }
     }

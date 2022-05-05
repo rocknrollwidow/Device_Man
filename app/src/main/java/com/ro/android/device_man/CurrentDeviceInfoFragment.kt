@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.net.toUri
 import androidx.fragment.app.*
 import java.time.LocalDate
+import java.util.concurrent.Executors
 
 class CurrentDeviceInfoFragment : Fragment() {
 
@@ -43,7 +44,6 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var iv4: ImageView? = null
     private var iv4_HAS_IMG: Boolean = false
     private var m_uri: Uri? = null
-    private var btAddPics03: Button? = null
     private var btUpdate03: Button? = null
     private var btDispose03: Button? = null
     private var btDatePicker03: Button? = null
@@ -62,7 +62,6 @@ class CurrentDeviceInfoFragment : Fragment() {
     private var status_spAdapter: ArrayAdapter<*>? = null
     private var typeArray: Array<String?>? = null
     private var statusArray: Array<String?>? = null
-   private var myIntent: Intent? = null
 
     companion object{
         @SuppressLint("StaticFieldLeak")
@@ -84,7 +83,6 @@ class CurrentDeviceInfoFragment : Fragment() {
     @SuppressLint("NewApi")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View?{
-
         val view = inflater.inflate(R.layout.fragment_current_device_info,container,false)
         val extras: Bundle?
         if(_isLayoutLarge){
@@ -99,7 +97,6 @@ class CurrentDeviceInfoFragment : Fragment() {
         etNumber03 = view.findViewById<View>(R.id.etnumber03) as EditText
         spStatus03 = view.findViewById<View>(R.id.spstatus03) as Spinner
         etReview03 = view.findViewById<View>(R.id.etreview03) as EditText
-        btAddPics03 = view.findViewById<View>(R.id.btaddpics03) as Button
         btUpdate03 = view.findViewById<View>(R.id.btupdate03) as Button
         btDispose03 = view.findViewById<View>(R.id.btdispose03) as Button
         btDatePicker03 = view.findViewById<View>(R.id.btdatepicker03) as Button
@@ -121,10 +118,8 @@ class CurrentDeviceInfoFragment : Fragment() {
         if(uri1 != null){iv1_HAS_IMG =true }
         uri2 = arguments?.getString("uri2")?.toUri()
         if(uri2 != null){iv2_HAS_IMG =true }
-        println("- - - - - - - - - uri2 ="+ uri2 + "iv2_HAS_IMG = " + iv2_HAS_IMG)
         uri3 = arguments?.getString("uri3")?.toUri()
         if(uri3 != null){iv3_HAS_IMG =true }
-        println("- - - - - - - - - uri3 ="+ uri3 + "iv3_HAS_IMG = " + iv3_HAS_IMG)
         uri4 = arguments?.getString("uri4")?.toUri()
         if(uri4 != null){iv4_HAS_IMG =true }
 
@@ -146,19 +141,19 @@ class CurrentDeviceInfoFragment : Fragment() {
         typeArray = resources.getStringArray(R.array.sp_type)
         status_spAdapter =
             ArrayAdapter<String>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, statusArray!!)
-        status_spAdapter!!.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
+        status_spAdapter?.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
         type_spAdapter =
             ArrayAdapter<String?>(this.requireContext(), R.layout.support_simple_spinner_dropdown_item, typeArray!!)
-        type_spAdapter!!.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
-        spStatus03!!.adapter = status_spAdapter
-        spStatus03!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        type_spAdapter?.setDropDownViewResource((android.R.layout.simple_dropdown_item_1line))
+        spStatus03?.adapter = status_spAdapter
+        spStatus03?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 val text = parent?.selectedItem as String
             }
             override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
-        spType03!!.adapter = type_spAdapter
-        spType03!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spType03?.adapter = type_spAdapter
+        spType03?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 val text = parent?.selectedItem as String
             }
@@ -176,20 +171,13 @@ class CurrentDeviceInfoFragment : Fragment() {
         if(iv3_HAS_IMG){iv3?.setImageURI(uri3)}
         if(iv4_HAS_IMG){iv4?.setImageURI(uri4)}
 
+
         btDatePicker03?.setOnClickListener { v -> // キーボードを非表示
             val inputMethodManager =
                 requireContext().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
 
             showDatePicker(view)
-        }
-
-        btAddPics03?.setOnClickListener { v -> // キーボードを非表示
-            val inputMethodManager =
-                requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
-            // DBに登録
-            showGallery(this.requireContext(),0)
         }
 
         btUpdate03?.setOnClickListener { v -> // キーボードを非表示
@@ -232,7 +220,7 @@ class CurrentDeviceInfoFragment : Fragment() {
             onItemClick_iv4(view)
         }
 
-        btDispose03!!.setOnClickListener{ v ->
+        btDispose03?.setOnClickListener{ v ->
             val inputMethodManager =
                 requireContext().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
@@ -240,7 +228,7 @@ class CurrentDeviceInfoFragment : Fragment() {
             val id = listId.toString()
             val name = etName03?.text.toString()
             val type = spType03?.selectedItem.toString()
-            val dateopened = etDateOpened03?.text.toString()
+            val dateOpened = etDateOpened03?.text.toString()
             val number = etNumber03?.text.toString()
             val status = spStatus03?.selectedItem.toString()
             val review = etReview03?.text.toString()
@@ -266,11 +254,36 @@ class CurrentDeviceInfoFragment : Fragment() {
         }
         return view
     }
+/*
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(iv1_HAS_IMG){iv1?.setImageURI(uri1)}
+        if(iv2_HAS_IMG){iv2?.setImageURI(uri2)}
+        if(iv3_HAS_IMG){iv3?.setImageURI(uri3)}
+        if(iv4_HAS_IMG){iv4?.setImageURI(uri4)}
+    }
 
+    private fun setUri2ImageView(){
+        val backgroundSetter = UriBackgroundSetter()
+        val executeService = Executors.newSingleThreadExecutor()
+        executeService.submit(backgroundSetter)
+
+    }
+
+    private inner class UriBackgroundSetter(): Runnable{
+        override fun run(){
+            if(iv1_HAS_IMG){iv1?.setImageURI(uri1)}
+            if(iv2_HAS_IMG){iv2?.setImageURI(uri2)}
+            if(iv3_HAS_IMG){iv3?.setImageURI(uri3)}
+            if(iv4_HAS_IMG){iv4?.setImageURI(uri4)}
+        }
+    }
+*/
     override fun onResume() {
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(this){
             isEnabled = false
+            requireActivity().finish()
         }
     }
 
@@ -314,50 +327,23 @@ class CurrentDeviceInfoFragment : Fragment() {
             // ギャラリーへスキャンを促す
             MediaScannerConnection.scanFile(this.requireContext(), arrayOf<String>(resultUri.getPath().toString()), arrayOf("image/jpeg"), null)
 
-            println("- - - - - - - - - - - -"+resultUri)
-            println("- - - - - - - - - - - - -"+ mark)
-            //btAddPic押下時の条件分岐
-            if(mark == 0) {
-                if (!iv1_HAS_IMG) {
-                    iv1?.setImageURI(resultUri)
+            when(mark){
+                1 ->{iv1?.setImageURI(resultUri)
                     uri1 = resultUri
-                    iv1_HAS_IMG = true
-                    println("- - - - - - - - - - 1")
-                } else if(!iv2_HAS_IMG){
-                    iv2?.setImageURI(resultUri)
+                    iv1_HAS_IMG = true }
+                2 ->{iv2?.setImageURI(resultUri)
                     uri2 = resultUri
-                    iv2_HAS_IMG = true
-                    println("- - - - - - - - - - 2")
-                }else if(!iv3_HAS_IMG){
-                    iv3?.setImageURI(resultUri)
+                    iv2_HAS_IMG = true }
+                3 ->{iv3?.setImageURI(resultUri)
                     uri3 = resultUri
-                    iv3_HAS_IMG = true
-                    println("- - - - - - - - - - 3")
-                }else if(!iv4_HAS_IMG){
-                    iv4?.setImageURI(resultUri)
+                    iv3_HAS_IMG = true }
+                4 ->{iv4?.setImageURI(resultUri)
                     uri4 = resultUri
-                    iv4_HAS_IMG = true
-                    println("- - - - - - - - - - 4")
+                    iv4_HAS_IMG = true }
+                else ->{iv1?.setImageURI(resultUri)
+                    uri1 = resultUri
+                    iv1_HAS_IMG = true }
                 }
-            }else{//各ImageView押下時の分岐
-                when(mark){
-                    1 ->{iv1?.setImageURI(resultUri)
-                        uri1 = resultUri
-                        iv1_HAS_IMG = true }
-                    2 ->{iv2?.setImageURI(resultUri)
-                        uri2 = resultUri
-                        iv2_HAS_IMG = true }
-                    3 ->{iv3?.setImageURI(resultUri)
-                        uri3 = resultUri
-                        iv3_HAS_IMG = true }
-                    4 ->{iv4?.setImageURI(resultUri)
-                        uri4 = resultUri
-                        iv4_HAS_IMG = true }
-                    else ->{iv1?.setImageURI(resultUri)
-                        uri1 = resultUri
-                        iv1_HAS_IMG = true }
-                }
-            }
         }
     }
 
@@ -365,7 +351,7 @@ class CurrentDeviceInfoFragment : Fragment() {
 
         val popupMenu = PopupMenu(this.requireContext(),iv1)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -391,7 +377,7 @@ class CurrentDeviceInfoFragment : Fragment() {
 
         val popupMenu = PopupMenu(this.requireContext(),iv2)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -416,7 +402,7 @@ class CurrentDeviceInfoFragment : Fragment() {
 
         val popupMenu = PopupMenu(this.requireContext(),iv3)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -441,7 +427,7 @@ class CurrentDeviceInfoFragment : Fragment() {
 
         val popupMenu = PopupMenu(this.requireContext(),iv4)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -496,20 +482,15 @@ class CurrentDeviceInfoFragment : Fragment() {
            struri4 = ""
         }
 
-       println("++++++++++++++++++++++"+uri1)
-       println("++++++++++++++++++++++"+uri2)
-       println("++++++++++++++++++++++"+uri3)
-       println("++++++++++++++++++++++"+uri4)
-
         cddbAdapter?.updateDB(id,name,type,number,dateopened,status,review,struri1,struri2,struri3,struri4)
 
        val bundle = Bundle()
        // フラグメントトランザクションの開始。
        val transaction = fragmentManager?.beginTransaction()
-       // 注文完了フラグメントを生成。
+       // 完了フラグメントを生成。
        val currentListFragment = CurrentListFragment()
        currentListFragment.arguments = bundle
-       // 生成した注文完了フラグメントをmenuThanksFrameレイアウト部品に追加(置き換え)。
+       // 生成した完了フラグメントをmenuThanksFrameレイアウト部品に追加(置き換え)。
        transaction?.replace(R.id.frCurrentList,currentListFragment)
        println("----------------replace実行")
        transaction?.addToBackStack(null)
@@ -523,5 +504,4 @@ class CurrentDeviceInfoFragment : Fragment() {
         val newFragment = CurrentDeviceDatePicker()
         newFragment.show(childFragmentManager,"datePicker")
     }
-
 }

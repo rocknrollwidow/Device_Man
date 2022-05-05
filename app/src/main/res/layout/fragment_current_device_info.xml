@@ -5,17 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:ignore="MissingDefaultResource">
-
-    <!--Todo 4-->
-    <!--Todo fragment_current_listのitemをタップし"name"と"number"でselect-->
-    <!--Todo 該当するレコードの内容を各EditTextに表示-->
-    <!--Todo "画像を追加"buttonをタップ → カメラ起動-->
-    <!--Todo "画像情報"エリアのTextureViewをタップ → 画像を拡大-->
-    <!--Todo "情報を更新"buttonをタップ → currentSheetをupdate-->
-    <!--Todo "廃棄する"buttonをタップ →廃棄確認dialogを表示 -->
-    <!--Todo 廃棄確認dialog → "Yes"タップで activity_disposed_deviceへ遷移・disposedSheetへ追加-->
-    <!--Todo fragment_disposed_deviceinfoへ遷移時EditTextの内容をIntent-->
 
     <EditText
         android:id="@+id/etname03"
@@ -117,49 +108,42 @@
 
     <ImageView
         android:id="@+id/iv403"
-        android:layout_width="96dp"
-        android:layout_height="83dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="172dp"
+        android:background="@drawable/border_imageview"
         app:layout_constraintStart_toEndOf="@+id/iv303"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <ImageView
         android:id="@+id/iv103"
-        android:layout_width="95dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="172dp"
+        android:background="@drawable/border_imageview"
         app:layout_constraintStart_toEndOf="@+id/tvpics03"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <ImageView
         android:id="@+id/iv303"
-        android:layout_width="96dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="172dp"
+        android:background="@drawable/border_imageview"
         app:layout_constraintStart_toEndOf="@+id/iv203"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <ImageView
         android:id="@+id/iv203"
-        android:layout_width="95dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="172dp"
+        android:background="@drawable/border_imageview"
         app:layout_constraintStart_toEndOf="@+id/iv103"
-        app:layout_constraintTop_toBottomOf="@+id/etname03" />
-
-    <Button
-        android:id="@+id/btaddpics03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="196dp"
-        android:text="@string/bt_add_pics03"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
     <TextView
@@ -173,12 +157,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname03" />
 
+    <TextView
+        android:id="@+id/tvpicsub103"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic1"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv103" />
+
+    <TextView
+        android:id="@+id/tvpicsub203"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:text="@string/pic2"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub103"
+        app:layout_constraintTop_toBottomOf="@+id/iv203" />
+
+    <TextView
+        android:id="@+id/tvpicsub303"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:text="@string/pic3"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/tvpicsub203"
+        app:layout_constraintTop_toBottomOf="@+id/iv303" />
+
+    <TextView
+        android:id="@+id/tvpicsub403"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:text="@string/pic4"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/tvpicsub303"
+        app:layout_constraintTop_toBottomOf="@+id/iv403" />
+
     <Button
         android:id="@+id/btdispose03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="328dp"
         android:text="@string/bt_dispose03"
         android:textSize="22dp"
         app:layout_constraintStart_toEndOf="@+id/btupdate03"
@@ -188,8 +213,8 @@
         android:id="@+id/btupdate03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="328dp"
         android:text="@string/bt_update03"
         android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"

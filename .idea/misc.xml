@@ -16,6 +16,9 @@
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_deviceinfo.xml" value="0.33" />
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_deviceinfo.xml" value="0.18" />
         <entry key="..\:/Users/isola/AndroidStudioProjects/Device_Man/app/src/main/res/layout/fragment_disposed_list.xml" value="0.153125" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/drawable/border_imageview.xml" value="0.356" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/drawable/list_devider.xml" value="0.356" />
+        <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/drawable/list_divider.xml" value="0.356" />
         <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_category.xml" value="0.17223910840932116" />
         <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_current_device.xml" value="0.1" />
         <entry key="..\:/Users/owner/StudioProjects/Device_Man/app/src/main/res/layout-large/activity_disposed_device.xml" value="0.266015625" />

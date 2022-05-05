@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:ignore="MissingDefaultResource">
 
     <!--Todo 6-->
     <!--Todo fragment_disposed_listのitemをタップし"name"と"number"、"date_disposed"でselect-->
     <!--Todo 該当するレコードの内容を各EditTextに表示-->
-    <!--Todo "画像情報"エリアのTextureViewをタップ → 画像を拡大-->
+    <!--Todo "画像情報"エリアのImageViewをタップ → 画像を拡大-->
     <!--Todo "画像を追加"buttonをタップ → カメラ起動-->
     <!--Todo "情報を更新"buttonをタップ → disposedSheetをupdate-->
 
@@ -105,12 +106,56 @@
         android:id="@+id/tvpics05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="246dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="244dp"
         android:text="@string/tv_pics04"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/tvstaff05"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+
+    <TextView
+        android:id="@+id/tvpicsub105"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic1"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv105" />
+
+    <TextView
+        android:id="@+id/tvpicsub205"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic2"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub105"
+        app:layout_constraintTop_toBottomOf="@+id/iv205" />
+
+    <TextView
+        android:id="@+id/tvpicsub305"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:text="@string/pic3"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub205"
+        app:layout_constraintTop_toBottomOf="@+id/iv305" />
+
+    <TextView
+        android:id="@+id/tvpicsub405"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/pic4"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tvpicsub305"
+        app:layout_constraintTop_toBottomOf="@+id/iv405" />
 
     <Button
         android:id="@+id/btdatepicker05"
@@ -123,11 +168,42 @@
 
     <ImageView
         android:id="@+id/iv105"
-        android:layout_width="63dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="248dp"
-        app:layout_constraintStart_toEndOf="@+id/tvpics05"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/border_imageview"
+        app:layout_constraintStart_toEndOf="@+id/etstaff05"
+        app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+    <ImageView
+        android:id="@+id/iv405"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/border_imageview"
+        app:layout_constraintStart_toEndOf="@+id/iv305"
+        app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+    <ImageView
+        android:id="@+id/iv305"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/border_imageview"
+        app:layout_constraintStart_toEndOf="@+id/iv205"
+        app:layout_constraintTop_toBottomOf="@+id/etname05" />
+
+    <ImageView
+        android:id="@+id/iv205"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/border_imageview"
+        app:layout_constraintStart_toEndOf="@+id/iv105"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
     <TextView
@@ -162,33 +238,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
-    <ImageView
-        android:id="@+id/iv205"
-        android:layout_width="60dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="248dp"
-        app:layout_constraintStart_toEndOf="@+id/iv105"
-        app:layout_constraintTop_toBottomOf="@+id/etname05" />
-
-    <ImageView
-        android:id="@+id/iv305"
-        android:layout_width="60dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="248dp"
-        app:layout_constraintStart_toEndOf="@+id/iv205"
-        app:layout_constraintTop_toBottomOf="@+id/etname05" />
-
-    <ImageView
-        android:id="@+id/iv405"
-        android:layout_width="60dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="248dp"
-        app:layout_constraintStart_toEndOf="@+id/iv305"
-        app:layout_constraintTop_toBottomOf="@+id/etname05" />
-
     <EditText
         android:id="@+id/etdateopened05"
         android:layout_width="130dp"
@@ -221,21 +270,10 @@
         app:layout_constraintTop_toBottomOf="@+id/etname05" />
 
     <Button
-        android:id="@+id/btaddpics05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="266dp"
-        android:text="@string/bt_add_pics03"
-        android:textSize="16dp"
-        app:layout_constraintStart_toEndOf="@+id/etstaff05"
-        app:layout_constraintTop_toBottomOf="@+id/etname05" />
-
-    <Button
         android:id="@+id/btupdate05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="360dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="316dp"
         android:text="@string/bt_update03"
         android:textSize="22dp"

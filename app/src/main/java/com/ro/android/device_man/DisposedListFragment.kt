@@ -1,6 +1,7 @@
 package com.ro.android.device_man
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,6 +73,7 @@ class DisposedListFragment : Fragment(){
         super.onResume()
         requireActivity().onBackPressedDispatcher.addCallback(this){
             isEnabled = false
+            requireActivity().finish()
         }
     }
 
@@ -103,11 +105,6 @@ class DisposedListFragment : Fragment(){
                     c.getString(12),
                     c.getString(13)
                 )
-                Log.d("取得したCursor(ID):", c.getInt(0).toString())
-                Log.d("取得したCursor(Name):", c.getString(1))
-                Log.d("取得したCursor(Type):", c.getString(2))
-                Log.d("取得したCursor(Number):",c.getString(3))
-
                 items!!.add(myDisposedItem!!) // 取得した要素をitemsに追加
             } while (c.moveToNext())
         }
@@ -145,12 +142,7 @@ class DisposedListFragment : Fragment(){
                     c.getString(11),
                     c.getString(12),
                     c.getString(13)
-
                 )
-                Log.d("取得したCursor(ID):", c.getInt(0).toString())
-                Log.d("取得したCursor(Name):", c.getString(1))
-                Log.d("取得したCursor(Type):", c.getString(2))
-                Log.d("取得したCursor(Number):",c.getString(3))
 
                 items!!.add(myDisposedItem!!) // 取得した要素をitemsに追加
             } while (c.moveToNext())
@@ -219,6 +211,7 @@ class DisposedListFragment : Fragment(){
         private inner class ViewHolder {
             var tv_disposed_name: TextView? = null
             var tv_disposed_date: TextView? = null
+            var tv_disposed_date_sub: TextView? = null
         }
 
         // Listの要素数を返す
@@ -250,11 +243,14 @@ class DisposedListFragment : Fragment(){
                     view.findViewById<View>(R.id.tv_disposed_name08) as TextView // 品名のTextView
                 val tv_disposed_date =
                     view.findViewById<View>(R.id.tv_disposed_date08) as TextView //廃棄日のTextView
+                val tv_disposed_date_sub =
+                    view.findViewById<View>(R.id.tv_disposed_date_sub08) as TextView //廃棄日のTextView
 
                 // holderにviewを持たせておく
                 holder = ViewHolder()
                 holder.tv_disposed_name = tv_disposed_name
                 holder.tv_disposed_date = tv_disposed_date
+                holder.tv_disposed_date_sub = tv_disposed_date_sub
                 view.tag = holder
             } else {
                 // 初めて表示されるときにつけておいたtagを元にviewを取得する
@@ -264,6 +260,11 @@ class DisposedListFragment : Fragment(){
             // 取得した各データを各TextViewにセット
             holder.tv_disposed_name!!.text = myDisposedItem!!.name
             holder.tv_disposed_date!!.text = myDisposedItem!!.date_disposed
+            if(myDisposedItem?.review != "") {
+                holder.tv_disposed_name?.setTextColor(Color.YELLOW)
+                holder.tv_disposed_date?.setTextColor(Color.YELLOW)
+                holder.tv_disposed_date_sub?.setTextColor(Color.YELLOW)
+            }
             return view
         }
     }

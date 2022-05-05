@@ -1,16 +1,18 @@
 package com.ro.android.device_man
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.TextureView
-import android.view.View
-import android.view.ViewGroup
+import android.provider.MediaStore
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
@@ -29,10 +31,13 @@ class DisposedDeviceInfoFragment : Fragment() {
     private var spStatus05: Spinner? = null
     private var etStaff05: EditText? = null
     private var iv1: ImageView? = null
+    private var iv1_HAS_IMG: Boolean = false
     private var iv2: ImageView? = null
+    private var iv2_HAS_IMG: Boolean = false
     private var iv3: ImageView? = null
+    private var iv3_HAS_IMG: Boolean = false
     private var iv4: ImageView? = null
-    private var btAddPics05: Button? = null
+    private var iv4_HAS_IMG: Boolean = false
     private var btUpdate05: Button? = null
     private var btDatePicker05: Button? = null
     private var name: String? = null
@@ -52,11 +57,14 @@ class DisposedDeviceInfoFragment : Fragment() {
     private var status_spAdapter: ArrayAdapter<*>? = null
     private var typeArray: Array<String?>? = null
     private var statusArray: Array<String?>? = null
+    private var mark: Int = 0
+    private var m_uri: Uri? = null
 
     companion object{
         @SuppressLint("StaticFieldLeak")
         var etDateOpened05: EditText? = null
         var etDateDisposed05: EditText? = null
+        private const val REQUEST_CHOOSER = 1000
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -91,7 +99,6 @@ class DisposedDeviceInfoFragment : Fragment() {
         etReason05 = view.findViewById<View>(R.id.etreason05) as EditText
         spStatus05 = view.findViewById<View>(R.id.spstatus05) as Spinner
         etStaff05 = view.findViewById<View>(R.id.etstaff05) as EditText
-        btAddPics05 = view.findViewById<View>(R.id.btaddpics05) as Button
         btUpdate05 = view.findViewById<View>(R.id.btupdate05) as Button
         btDatePicker05 = view.findViewById<View>(R.id.btdatepicker05) as Button
         iv1 = view.findViewById<View>(R.id.iv105) as ImageView
@@ -138,6 +145,38 @@ class DisposedDeviceInfoFragment : Fragment() {
             onClickUpdateDisposed(view)
         }
 
+        iv1?.setOnClickListener{ v -> // キーボードを非表示
+            val inputMethodManager =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+            // DBに登録
+            onItemClick_iv1(view)
+        }
+
+        iv2?.setOnClickListener{ v -> // キーボードを非表示
+            val inputMethodManager =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+            // DBに登録
+            onItemClick_iv2(view)
+        }
+
+        iv3?.setOnClickListener{ v -> // キーボードを非表示
+            val inputMethodManager =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+            // DBに登録
+            onItemClick_iv3(view)
+        }
+
+        iv4?.setOnClickListener{ v -> // キーボードを非表示
+            val inputMethodManager =
+                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
+            // DBに登録
+            onItemClick_iv4(view)
+        }
+
         var indexType: Int = 0
         var indexStatus: Int = 0
         listId = arguments?.getString("listId")
@@ -150,10 +189,14 @@ class DisposedDeviceInfoFragment : Fragment() {
         review = arguments?.getString("review")
         status = arguments?.getString("status")
         staff = arguments?.getString("staff")
-        uri1 = arguments?.getString("uri1")!!.toUri()
-        uri2 = arguments?.getString("uri2")!!.toUri()
-        uri3 = arguments?.getString("uri3")!!.toUri()
-        uri4 = arguments?.getString("uri4")!!.toUri()
+        uri1 = arguments?.getString("uri1")?.toUri()
+        if(uri1 != null){iv1_HAS_IMG =true }
+        uri2 = arguments?.getString("uri2")?.toUri()
+        if(uri2 != null){iv2_HAS_IMG =true }
+        uri3 = arguments?.getString("uri3")?.toUri()
+        if(uri3 != null){iv3_HAS_IMG =true }
+        uri4 = arguments?.getString("uri4")?.toUri()
+        if(uri4 != null){iv4_HAS_IMG =true }
 
         when(type){
             "EGD"->{indexType = 1}
@@ -176,21 +219,200 @@ class DisposedDeviceInfoFragment : Fragment() {
         etReview05!!.setText(review)
         etReason05!!.setText(reason)
         etStaff05!!.setText(staff)
-        iv1!!.setImageURI(uri1)
-        iv2!!.setImageURI(uri2)
-        iv3!!.setImageURI(uri3)
-        iv4!!.setImageURI(uri4)
+        if(iv1_HAS_IMG){iv1?.setImageURI(uri1)}
+        if(iv2_HAS_IMG){iv2?.setImageURI(uri2)}
+        if(iv3_HAS_IMG){iv3?.setImageURI(uri3)}
+        if(iv4_HAS_IMG){iv4?.setImageURI(uri4)}
 
         return view
     }
-    /*
+
         override fun onResume() {
             super.onResume()
             requireActivity().onBackPressedDispatcher.addCallback(this){
                 isEnabled = false
+                requireActivity().finish()
             }
         }
-    */
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CHOOSER) {
+            if (resultCode != AppCompatActivity.RESULT_OK) {
+                // キャンセル時
+                return
+            }
+            val resultUri: Uri = (if (data != null) data.getData() else m_uri)
+                ?: // 取得失敗
+                return
+
+            // ギャラリーへスキャンを促す
+            MediaScannerConnection.scanFile(
+                this.requireContext(),
+                arrayOf<String>(resultUri.getPath().toString()),
+                arrayOf("image/jpeg"),
+                null
+            )
+
+            when (mark) {
+                1 -> {
+                    iv1?.setImageURI(resultUri)
+                    uri1 = resultUri
+                    iv1_HAS_IMG = true
+                }
+                2 -> {
+                    iv2?.setImageURI(resultUri)
+                    uri2 = resultUri
+                    iv2_HAS_IMG = true
+                }
+                3 -> {
+                    iv3?.setImageURI(resultUri)
+                    uri3 = resultUri
+                    iv3_HAS_IMG = true
+                }
+                4 -> {
+                    iv4?.setImageURI(resultUri)
+                    uri4 = resultUri
+                    iv4_HAS_IMG = true
+                }
+                else -> {
+                    iv1?.setImageURI(resultUri)
+                    uri1 = resultUri
+                    iv1_HAS_IMG = true
+                }
+            }
+        }
+    }
+
+    private fun showGallery(context: Context,marker: Int) {
+        mark = marker
+        //カメラの起動Intentの用意
+        val photoName = System.currentTimeMillis().toString() + ".jpg"
+        val contentValues = ContentValues()
+        contentValues.put(MediaStore.Images.Media.TITLE, photoName)
+        contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+        m_uri = context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+        val intentCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, m_uri)
+
+        // ギャラリー用のIntent作成
+        val intentGallery: Intent
+        if (Build.VERSION.SDK_INT < 19) {
+            intentGallery = Intent(Intent.ACTION_GET_CONTENT)
+            intentGallery.setType("image/*")
+        } else {
+            intentGallery = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intentGallery.addCategory(Intent.CATEGORY_OPENABLE)
+            intentGallery.setType("image/jpeg")
+        }
+        val intent: Intent = Intent.createChooser(intentCamera, "画像の選択")
+        intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(intentGallery))
+        startActivityForResult(intent,REQUEST_CHOOSER)
+    }
+
+
+
+    private fun onItemClick_iv1(view: View) {
+
+        val popupMenu = PopupMenu(this.requireContext(),iv1)
+        popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
+        popupMenu.menu.add(Menu.NONE,2,2,"削除")
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            val id = menuItem.itemId
+            if (id == 0) {
+                val myIntent = Intent(this.requireContext(),ShowImageActivity::class.java)
+                myIntent.putExtra("uri", uri1)
+                startActivity(myIntent)
+            } else if(id == 1){
+                showGallery(this.requireContext(),1)
+            }else{
+                iv1?.setImageURI(null)
+                iv1_HAS_IMG = false
+                uri1 = null
+            }
+            false
+        }
+
+        popupMenu.show()
+    }
+
+    private fun onItemClick_iv2(view: View) {
+
+        val popupMenu = PopupMenu(this.requireContext(),iv2)
+        popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
+        popupMenu.menu.add(Menu.NONE,2,2,"削除")
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            val id = menuItem.itemId
+            if (id == 0) {
+                val myIntent = Intent(this.requireContext(),ShowImageActivity::class.java)
+                myIntent.putExtra("uri", uri2)
+                startActivity(myIntent)
+            } else if(id == 1){
+                showGallery(this.requireContext(),2)
+            }else{
+                iv2?.setImageURI(null)
+                iv2_HAS_IMG = false
+                uri2 = null
+            }
+            false
+        }
+        popupMenu.show()
+    }
+
+    private fun onItemClick_iv3(view: View) {
+
+        val popupMenu = PopupMenu(this.requireContext(),iv3)
+        popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
+        popupMenu.menu.add(Menu.NONE,2,2,"削除")
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            val id = menuItem.itemId
+            if (id == 0) {
+                val myIntent = Intent(this.requireContext(),ShowImageActivity::class.java)
+                myIntent.putExtra("uri", uri3)
+                startActivity(myIntent)
+            } else if(id == 1){
+                showGallery(this.requireContext(),3)
+            }else{
+                iv3?.setImageURI(null)
+                iv3_HAS_IMG = false
+                uri3 = null
+            }
+            false
+        }
+        popupMenu.show()
+    }
+
+    private fun onItemClick_iv4(view: View) {
+
+        val popupMenu = PopupMenu(this.requireContext(),iv4)
+        popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
+        popupMenu.menu.add(Menu.NONE,2,2,"削除")
+
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            val id = menuItem.itemId
+            if (id == 0) {
+                val myIntent = Intent(this.requireActivity(),ShowImageActivity::class.java)
+                myIntent.putExtra("uri", uri4)
+                startActivity(myIntent)
+            } else if(id == 1){
+                showGallery(this.requireContext(),4)
+            }else{
+                iv4?.setImageURI(null)
+                iv4_HAS_IMG = false
+                uri4 = null
+            }
+            false
+        }
+        popupMenu.show()
+    }
+
     private fun onClickUpdateDisposed(view: View){
 
         val id = listId.toString()

@@ -24,10 +24,9 @@ class NewDeviceActivity : AppCompatActivity() {
     private var etReview04: EditText? = null
     private var spStatus04: Spinner? = null
     private var etNumber04: EditText? = null
-    private var spStaff04: Spinner? = null
     private var btAdd04: Button? = null
     private var btDatePicker04: Button? = null
-    private var btAddPics04: Button? = null
+    //private var btAddPics04: Button? = null
     private var statusArray: Array<String?>? = null
     private var typeArray: Array<String?>? = null
     private var status_spAdapter: ArrayAdapter<*>? = null
@@ -92,14 +91,14 @@ class NewDeviceActivity : AppCompatActivity() {
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-
+/*
         btAddPics04!!.setOnClickListener{  v  ->
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
 
             showGallery(this,0)
         }
-
+*/
         // 登録ボタン押下時処理
         btAdd04!!.setOnClickListener { v -> // キーボードを非表示
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -123,7 +122,7 @@ private fun findViews(){
     etNumber04 = findViewById<View>(R.id.etnumber04) as EditText
     btAdd04 = findViewById<View>(R.id.btadd04) as Button
     btDatePicker04 = findViewById<View>(R.id.btdatepicker04) as Button
-    btAddPics04 = findViewById<View>(R.id.btaddpics04) as Button
+ //   btAddPics04 = findViewById<View>(R.id.btaddpics04) as Button
     iv1 = findViewById<View>(R.id.iv104) as ImageView
     iv2 = findViewById<View>(R.id.iv204) as ImageView
     iv3 = findViewById<View>(R.id.iv304) as ImageView
@@ -183,25 +182,6 @@ private fun init() {
             // ギャラリーへスキャンを促す
             MediaScannerConnection.scanFile(this, arrayOf<String>(resultUri.getPath().toString()), arrayOf("image/jpeg"), null)
 
-         if(mark == 0) {
-                if (!iv1_HAS_IMG) {
-                    iv1!!.setImageURI(resultUri)
-                    URI_1 = resultUri
-                    iv1_HAS_IMG = true
-                } else if(!iv2_HAS_IMG){
-                    iv2!!.setImageURI(resultUri)
-                    URI_2 = resultUri
-                    iv2_HAS_IMG = true
-                    }else if(!iv3_HAS_IMG){
-                    iv3!!.setImageURI(resultUri)
-                    URI_3 = resultUri
-                    iv3_HAS_IMG = true
-                      }else if(!iv4_HAS_IMG){
-                    iv4!!.setImageURI(resultUri)
-                    URI_4 = resultUri
-                    iv4_HAS_IMG = true
-                }
-            }else{
              when(mark){
                  1 ->{iv1!!.setImageURI(resultUri)
                      URI_1 = resultUri
@@ -219,7 +199,7 @@ private fun init() {
                      URI_1 = resultUri
                      iv1_HAS_IMG = true }
              }
-         }
+
         }
     }
 
@@ -258,7 +238,7 @@ private fun saveList() {
 
                 val popupMenu = PopupMenu(this@NewDeviceActivity,view)
                 popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-                popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+                popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
                 popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
                 popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -282,7 +262,7 @@ private fun saveList() {
 
         val popupMenu = PopupMenu(this@NewDeviceActivity,view)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -306,7 +286,7 @@ private fun saveList() {
 
         val popupMenu = PopupMenu(this@NewDeviceActivity,view)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -330,7 +310,7 @@ private fun saveList() {
 
         val popupMenu = PopupMenu(this@NewDeviceActivity,view)
         popupMenu.menu.add(Menu.NONE, 0, 0, "拡大表示")
-        popupMenu.menu.add(Menu.NONE, 1, 1, "変更")
+        popupMenu.menu.add(Menu.NONE, 1, 1, "追加・変更")
         popupMenu.menu.add(Menu.NONE,2,2,"削除")
 
         popupMenu.setOnMenuItemClickListener { menuItem ->

@@ -58,6 +58,13 @@
     <string name="tv_current_number">管理番号：</string>
     <string name="tv_disposed_date_disposed">廃棄日：</string>
 
+    <!--common text-->
+    <string name="pic1">画像1</string>
+    <string name="pic2">画像2</string>
+    <string name="pic3">画像3</string>
+    <string name="pic4">画像4</string>
+    <string name="pics_sub">枠内をタップして画像を追加</string>
+
     <!--date format-->
     <string name="date_format">%d/%02d/%02d</string>
 

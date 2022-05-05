@@ -15,12 +15,12 @@
         android:name="com.ro.android.device_man.DisposedListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.2" />
+        android:layout_weight="0.25" />
 
     <FrameLayout
         android:id="@+id/disposedDeviceFrame"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.8"/>
+        android:layout_weight="0.75"/>
 
 </LinearLayout>

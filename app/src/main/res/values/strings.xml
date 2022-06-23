@@ -6,6 +6,7 @@
     <string name="bt_current01">使用中の処置具</string>
     <string name="bt_disposed01">廃棄した処置具</string>
     <string name="bt_add01">新規登録</string>
+    <string name="bt_print01">印　刷</string>
 
     <!--activity_category-->
     <string name="bt_egd02">EGD</string>

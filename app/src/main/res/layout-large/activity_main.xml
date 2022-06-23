@@ -52,14 +52,27 @@
         android:id="@+id/btAdd01"
         android:layout_width="220dp"
         android:layout_height="100dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
         android:onClick="onClickAdd"
         android:text="@string/bt_add01"
         android:textSize="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintEnd_toStartOf="@+id/btPrint01"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCurrent01" />
+
+    <Button
+        android:id="@+id/btPrint01"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="236dp"
+        android:onClick="onClickAdd"
+        android:text="@string/bt_print01"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btDisposed01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
